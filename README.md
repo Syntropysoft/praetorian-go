@@ -89,12 +89,34 @@ go build ./cmd/praetorian
 ./praetorian --version
 ```
 
-### From Binary (Future Releases)
+### From Binary (Current Release)
 ```bash
-# Download for your platform
-curl -L https://github.com/syntropysoft/praetorian/releases/latest/download/praetorian-$(uname -s | tr '[:upper:]' '[:lower:]')-$(uname -m) -o praetorian
+# Download for your platform from releases/
+# Available binaries:
+# - praetorian-darwin-amd64 (macOS Intel)
+# - praetorian-darwin-arm64 (macOS Apple Silicon)
+# - praetorian-linux-amd64 (Linux x86_64)
+# - praetorian-linux-arm64 (Linux ARM64)
+# - praetorian-windows-amd64.exe (Windows x86_64)
+# - praetorian-windows-arm64.exe (Windows ARM64)
+
+# Example for macOS Apple Silicon:
+curl -L https://github.com/syntropysoft/praetorian-go/releases/latest/download/praetorian-darwin-arm64 -o praetorian
 chmod +x praetorian
 ./praetorian --version
+```
+
+### Building from Source
+```bash
+# Clone and build
+git clone https://github.com/syntropysoft/praetorian-go.git
+cd praetorian-go
+
+# Build for your platform
+go build -o praetorian ./cmd/praetorian
+
+# Or build for all platforms
+./build.sh
 ```
 
 ### Via Go Install (Future)
