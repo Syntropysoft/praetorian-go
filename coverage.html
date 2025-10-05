@@ -1,0 +1,3098 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>praetorian: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">github.com/syntropysoft/praetorian-go/cmd/praetorian/main.go (0.0%)</option>
+				
+				<option value="file1">github.com/syntropysoft/praetorian-go/internal/adapters/loaders/file_reader.go (0.0%)</option>
+				
+				<option value="file2">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/common.go (0.0%)</option>
+				
+				<option value="file3">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/env_processor.go (0.0%)</option>
+				
+				<option value="file4">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/hcl_processor.go (0.0%)</option>
+				
+				<option value="file5">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/ini_processor.go (0.0%)</option>
+				
+				<option value="file6">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/json_processor.go (0.0%)</option>
+				
+				<option value="file7">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/parsers.go (0.0%)</option>
+				
+				<option value="file8">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/properties_processor.go (0.0%)</option>
+				
+				<option value="file9">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/registry.go (0.0%)</option>
+				
+				<option value="file10">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/test_interfaces.go (0.0%)</option>
+				
+				<option value="file11">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/toml_processor.go (0.0%)</option>
+				
+				<option value="file12">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/xml_processor.go (0.0%)</option>
+				
+				<option value="file13">github.com/syntropysoft/praetorian-go/internal/adapters/parsers/yaml_processor.go (0.0%)</option>
+				
+				<option value="file14">github.com/syntropysoft/praetorian-go/internal/cli/audit.go (0.0%)</option>
+				
+				<option value="file15">github.com/syntropysoft/praetorian-go/internal/cli/commands.go (0.0%)</option>
+				
+				<option value="file16">github.com/syntropysoft/praetorian-go/internal/cli/init.go (0.0%)</option>
+				
+				<option value="file17">github.com/syntropysoft/praetorian-go/internal/cli/test_interfaces.go (0.0%)</option>
+				
+				<option value="file18">github.com/syntropysoft/praetorian-go/internal/cli/validate.go (0.0%)</option>
+				
+				<option value="file19">github.com/syntropysoft/praetorian-go/internal/cli/validators.go (0.0%)</option>
+				
+				<option value="file20">github.com/syntropysoft/praetorian-go/internal/cli/version.go (0.0%)</option>
+				
+				<option value="file21">github.com/syntropysoft/praetorian-go/internal/domain/models/config.go (0.0%)</option>
+				
+				<option value="file22">github.com/syntropysoft/praetorian-go/internal/services/validation/pipeline.go (0.0%)</option>
+				
+				<option value="file23">github.com/syntropysoft/praetorian-go/tests/test_helper.go (0.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">not covered</span>
+				<span class="cov8">covered</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package main
+
+import (
+        "fmt"
+        "os"
+
+        "github.com/fatih/color"
+        "github.com/spf13/cobra"
+        "github.com/syntropysoft/praetorian-go/internal/cli"
+)
+
+var (
+        version = "0.0.1-alpha"
+        commit  = "dev"
+        date    = "unknown"
+)
+
+func main() <span class="cov0" title="0">{
+        var rootCmd = &amp;cobra.Command{
+                Use:   "praetorian",
+                Short: "Guardian of Configurations",
+                Long: `Praetorian CLI – Universal Validation Framework for DevSecOps
+
+🛡️  Guardian of Configurations &amp; Security
+
+Praetorian CLI is a multi-environment configuration validation tool designed for DevSecOps teams.
+It ensures that your configuration files remain consistent across environments and detects 
+critical differences before production deployments.
+
+Perfect for:
+• Microservices architectures with multiple config files
+• Multi-environment deployments (dev, staging, prod)
+• Security compliance and configuration drift detection
+• CI/CD pipelines requiring config validation`,
+
+                Version: fmt.Sprintf("%s (commit: %s, built: %s)", version, commit, date),
+                PersistentPreRun: func(cmd *cobra.Command, args []string) </span><span class="cov0" title="0">{
+                        // Show banner on first run
+                        if cmd.Name() == "praetorian" </span><span class="cov0" title="0">{
+                                showBanner()
+                        }</span>
+                },
+        }
+
+        // Register all commands
+        <span class="cov0" title="0">cli.RegisterCommands(rootCmd)
+
+        // Execute
+        if err := rootCmd.Execute(); err != nil </span><span class="cov0" title="0">{
+                fmt.Fprintf(os.Stderr, "Error: %v\n", err)
+                os.Exit(1)
+        }</span>
+}
+
+// showBanner displays the Praetorian banner
+func showBanner() <span class="cov0" title="0">{
+        cyan := color.New(color.FgCyan).SprintFunc()
+        bold := color.New(color.Bold).SprintFunc()
+        
+        fmt.Println()
+        fmt.Println(cyan(`  ____                 _             _                ____ _     ___ `))
+        fmt.Println(cyan(` |  _ \ _ __ __ _  ___| |_ ___  _ __(_) __ _ _ __    / ___| |   |_ _|`))
+        fmt.Println(cyan(` | |_) | '__/ _`) + bold(` |/ _ \ __/ _ \| '__| |/ _`) + cyan(` | '_ \  | |   | |    | | `))
+        fmt.Println(cyan(` |  __/| | | (_| |  __/ || (_) | |  | | (_| | | | | | |___| |___ | | `))
+        fmt.Println(cyan(` |_|   |_|  \__,_|\___|\__\___/|_|  |_|\__,_|_| |_|  \____|_____|___|`))
+        fmt.Println()
+        fmt.Println(cyan(`                                                                     `))
+        fmt.Println(cyan(`🛡️  Guardian of Configurations &amp; Security`))
+        fmt.Println()
+}</span>
+
+// newValidateCommand creates the validate command
+func newValidateCommand() *cobra.Command <span class="cov0" title="0">{
+        var configPath string
+        var output string
+        var pipeline bool
+
+        cmd := &amp;cobra.Command{
+                Use:   "validate",
+                Short: "Validate configuration files across environments",
+                Long: `Validate configuration files for consistency across environments.
+
+This command compares configuration files between different environments (dev, staging, prod)
+and reports missing keys, extra keys, and value differences.
+
+Examples:
+  praetorian validate                           # Validate current directory
+  praetorian validate --config praetorian.yaml # Use specific config file
+  praetorian validate --output json            # Output in JSON format
+  praetorian validate --pipeline               # CI/CD friendly output`,
+                RunE: func(cmd *cobra.Command, args []string) error </span><span class="cov0" title="0">{
+                        fmt.Println("🔍 Starting configuration validation...")
+                        fmt.Printf("📁 Config: %s\n", configPath)
+                        fmt.Printf("📤 Output: %s\n", output)
+                        fmt.Printf("🚀 Pipeline mode: %v\n", pipeline)
+                        
+                        // TODO: Implement validation logic
+                        fmt.Println("✅ Validation completed successfully!")
+                        
+                        return nil
+                }</span>,
+        }
+
+        <span class="cov0" title="0">cmd.Flags().StringVarP(&amp;configPath, "config", "c", "praetorian.yaml", "Configuration file path")
+        cmd.Flags().StringVarP(&amp;output, "output", "o", "text", "Output format (text, json, yaml)")
+        cmd.Flags().BoolVar(&amp;pipeline, "pipeline", false, "Enable pipeline mode for CI/CD")
+
+        return cmd</span>
+}
+
+// newAuditCommand creates the audit command
+func newAuditCommand() *cobra.Command <span class="cov0" title="0">{
+        var auditType string
+        var output string
+        var configPath string
+
+        cmd := &amp;cobra.Command{
+                Use:   "audit",
+                Short: "Run security and compliance audits",
+                Long: `Run comprehensive security and compliance audits on configuration files.
+
+Examples:
+  praetorian audit                           # Run all audits on current directory
+  praetorian audit --type security          # Run security audit only
+  praetorian audit --config praetorian.yaml # Use specific config file
+  praetorian audit --output json            # Output in JSON format`,
+                RunE: func(cmd *cobra.Command, args []string) error </span><span class="cov0" title="0">{
+                        fmt.Println("🔒 Starting Praetorian Audit...")
+                        fmt.Printf("📁 Config: %s\n", configPath)
+                        fmt.Printf("🔍 Type: %s\n", auditType)
+                        fmt.Printf("📤 Output: %s\n", output)
+                        
+                        // TODO: Implement audit logic
+                        fmt.Println("✅ Audit completed successfully!")
+                        
+                        return nil
+                }</span>,
+        }
+
+        <span class="cov0" title="0">cmd.Flags().StringVarP(&amp;auditType, "type", "t", "all", "Audit type (security, compliance, performance, all)")
+        cmd.Flags().StringVarP(&amp;output, "output", "o", "text", "Output format (text, json, yaml)")
+        cmd.Flags().StringVarP(&amp;configPath, "config", "c", "praetorian.yaml", "Configuration file path")
+
+        return cmd</span>
+}
+
+// newInitCommand creates the init command
+func newInitCommand() *cobra.Command <span class="cov0" title="0">{
+        var devsecops bool
+
+        cmd := &amp;cobra.Command{
+                Use:   "init",
+                Short: "Initialize Praetorian configuration",
+                Long: `Initialize Praetorian configuration for your project.
+
+This command creates a praetorian.yaml configuration file with sensible defaults
+for validating your configuration files across environments.
+
+Examples:
+  praetorian init                    # Create basic configuration
+  praetorian init --devsecops        # Create DevSecOps optimized configuration`,
+                RunE: func(cmd *cobra.Command, args []string) error </span><span class="cov0" title="0">{
+                        fmt.Println("🚀 Initializing Praetorian configuration...")
+                        fmt.Printf("🛡️  DevSecOps mode: %v\n", devsecops)
+                        
+                        // TODO: Implement init logic
+                        fmt.Println("✅ Configuration initialized successfully!")
+                        
+                        return nil
+                }</span>,
+        }
+
+        <span class="cov0" title="0">cmd.Flags().BoolVar(&amp;devsecops, "devsecops", false, "Initialize with DevSecOps optimizations")
+
+        return cmd</span>
+}
+
+// newVersionCommand creates the version command
+func newVersionCommand() *cobra.Command <span class="cov0" title="0">{
+        cmd := &amp;cobra.Command{
+                Use:   "version",
+                Short: "Show version information",
+                Run: func(cmd *cobra.Command, args []string) </span><span class="cov0" title="0">{
+                        fmt.Printf("Praetorian CLI v%s\n", version)
+                        fmt.Printf("Commit: %s\n", commit)
+                        fmt.Printf("Built: %s\n", date)
+                        fmt.Printf("Go version: %s\n", "1.21+")
+                }</span>,
+        }
+
+        <span class="cov0" title="0">return cmd</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package loaders
+
+import (
+        "fmt"
+        "os"
+        "path/filepath"
+        "strings"
+        "time"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// LocalFileReader implements FileReader interface for local filesystem
+type LocalFileReader struct {
+        basePath string
+}
+
+// NewLocalFileReader creates a new local file reader
+func NewLocalFileReader(basePath string) *LocalFileReader <span class="cov0" title="0">{
+        // Guard clause: validate and normalize base path
+        normalizedPath := normalizeBasePath(basePath)
+        
+        return &amp;LocalFileReader{
+                basePath: normalizedPath,
+        }
+}</span>
+
+// normalizeBasePath normalizes and validates a base path
+func normalizeBasePath(basePath string) string <span class="cov0" title="0">{
+        // Guard clause: empty path defaults to current directory
+        if basePath == "" </span><span class="cov0" title="0">{
+                return getCurrentDirectory()
+        }</span>
+        
+        // Guard clause: already absolute path
+        <span class="cov0" title="0">if filepath.IsAbs(basePath) </span><span class="cov0" title="0">{
+                return basePath
+        }</span>
+        
+        // Convert relative path to absolute
+        <span class="cov0" title="0">return convertToAbsolutePath(basePath)</span>
+}
+
+// getCurrentDirectory returns the current working directory
+func getCurrentDirectory() string <span class="cov0" title="0">{
+        dir, err := filepath.Abs(".")
+        if err != nil </span><span class="cov0" title="0">{
+                return "." // Fallback
+        }</span>
+        <span class="cov0" title="0">return dir</span>
+}
+
+// convertToAbsolutePath converts a relative path to absolute
+func convertToAbsolutePath(relativePath string) string <span class="cov0" title="0">{
+        absPath, err := filepath.Abs(relativePath)
+        if err != nil </span><span class="cov0" title="0">{
+                return getCurrentDirectory() // Fallback to current directory
+        }</span>
+        <span class="cov0" title="0">return absPath</span>
+}
+
+// ReadFile reads a file from the local filesystem
+func (r *LocalFileReader) ReadFile(filename string) ([]byte, error) <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if err := r.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid filename: %w", err)
+        }</span>
+
+        // Guard clause: check if file exists
+        <span class="cov0" title="0">if !r.FileExists(filename) </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("file does not exist: %s", filename)
+        }</span>
+
+        // Read file content
+        <span class="cov0" title="0">fullPath := r.getFullPath(filename)
+        content, err := os.ReadFile(fullPath)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to read file %s: %w", filename, err)
+        }</span>
+
+        <span class="cov0" title="0">return content, nil</span>
+}
+
+// FileExists checks if a file exists
+func (r *LocalFileReader) FileExists(filename string) bool <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if err := r.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">fullPath := r.getFullPath(filename)
+        _, err := os.Stat(fullPath)
+        return !os.IsNotExist(err)</span>
+}
+
+// GetFileInfo returns file information
+func (r *LocalFileReader) GetFileInfo(filename string) (*models.FileInfo, error) <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if err := r.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid filename: %w", err)
+        }</span>
+
+        // Guard clause: check if file exists
+        <span class="cov0" title="0">if !r.FileExists(filename) </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("file does not exist: %s", filename)
+        }</span>
+
+        <span class="cov0" title="0">fullPath := r.getFullPath(filename)
+        stat, err := os.Stat(fullPath)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get file info for %s: %w", filename, err)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;models.FileInfo{
+                Name:    stat.Name(),
+                Size:    stat.Size(),
+                ModTime: stat.ModTime(),
+                IsDir:   stat.IsDir(),
+        }, nil</span>
+}
+
+// validateFilename validates a filename
+func (r *LocalFileReader) validateFilename(filename string) error <span class="cov0" title="0">{
+        if filename == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename cannot be empty")
+        }</span>
+        
+        // Check for path traversal attacks
+        <span class="cov0" title="0">if strings.Contains(filename, "..") </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename contains invalid path traversal: %s", filename)
+        }</span>
+        
+        // Check for absolute paths outside base path
+        <span class="cov0" title="0">if filepath.IsAbs(filename) </span><span class="cov0" title="0">{
+                // For absolute paths, ensure they're within base path
+                if !strings.HasPrefix(filename, r.basePath) </span><span class="cov0" title="0">{
+                        return fmt.Errorf("filename outside base path: %s", filename)
+                }</span>
+        }
+        
+        <span class="cov0" title="0">return nil</span>
+}
+
+// getFullPath returns the full path for a filename
+func (r *LocalFileReader) getFullPath(filename string) string <span class="cov0" title="0">{
+        if filepath.IsAbs(filename) </span><span class="cov0" title="0">{
+                return filename
+        }</span>
+        <span class="cov0" title="0">return filepath.Join(r.basePath, filename)</span>
+}
+
+// GetBasePath returns the base path
+func (r *LocalFileReader) GetBasePath() string <span class="cov0" title="0">{
+        return r.basePath
+}</span>
+
+// SetBasePath sets a new base path
+func (r *LocalFileReader) SetBasePath(basePath string) error <span class="cov0" title="0">{
+        // Guard clause: validate base path
+        if err := validateBasePath(basePath); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("invalid base path: %w", err)
+        }</span>
+
+        // Guard clause: check if path exists and is directory
+        <span class="cov0" title="0">if err := validateDirectoryExists(basePath); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("directory validation failed: %w", err)
+        }</span>
+
+        // Set normalized absolute path
+        <span class="cov0" title="0">r.basePath = normalizeBasePath(basePath)
+        return nil</span>
+}
+
+// validateBasePath validates a base path
+func validateBasePath(basePath string) error <span class="cov0" title="0">{
+        if basePath == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("base path cannot be empty")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// validateDirectoryExists validates that a path exists and is a directory
+func validateDirectoryExists(path string) error <span class="cov0" title="0">{
+        stat, err := os.Stat(path)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("path does not exist: %w", err)
+        }</span>
+        
+        <span class="cov0" title="0">if !stat.IsDir() </span><span class="cov0" title="0">{
+                return fmt.Errorf("path is not a directory: %s", path)
+        }</span>
+        
+        <span class="cov0" title="0">return nil</span>
+}
+
+// ListFiles lists files matching a pattern
+func (r *LocalFileReader) ListFiles(pattern string) ([]string, error) <span class="cov0" title="0">{
+        // Guard clause: validate pattern
+        if err := validatePattern(pattern); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid pattern: %w", err)
+        }</span>
+
+        // Find matching files
+        <span class="cov0" title="0">matches, err := findMatchingFiles(r.getFullPath(pattern))
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to find files: %w", err)
+        }</span>
+
+        // Convert to relative paths
+        <span class="cov0" title="0">return convertToRelativePaths(matches, r.basePath), nil</span>
+}
+
+// validatePattern validates a glob pattern
+func validatePattern(pattern string) error <span class="cov0" title="0">{
+        if pattern == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("pattern cannot be empty")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// findMatchingFiles finds files matching a pattern
+func findMatchingFiles(pattern string) ([]string, error) <span class="cov0" title="0">{
+        matches, err := filepath.Glob(pattern)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("glob failed for pattern %s: %w", pattern, err)
+        }</span>
+        <span class="cov0" title="0">return matches, nil</span>
+}
+
+// convertToRelativePaths converts absolute paths to relative paths
+func convertToRelativePaths(absolutePaths []string, basePath string) []string <span class="cov0" title="0">{
+        relativePaths := make([]string, 0, len(absolutePaths))
+        
+        for _, absPath := range absolutePaths </span><span class="cov0" title="0">{
+                if relativePath, err := filepath.Rel(basePath, absPath); err == nil </span><span class="cov0" title="0">{
+                        relativePaths = append(relativePaths, relativePath)
+                }</span>
+                // Skip files that can't be made relative (silently)
+        }
+        
+        <span class="cov0" title="0">return relativePaths</span>
+}
+
+// IsDirectory checks if a path is a directory
+func (r *LocalFileReader) IsDirectory(path string) bool <span class="cov0" title="0">{
+        // Guard clause: validate path
+        if err := r.validateFilename(path); err != nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">fullPath := r.getFullPath(path)
+        stat, err := os.Stat(fullPath)
+        if err != nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+        
+        <span class="cov0" title="0">return stat.IsDir()</span>
+}
+
+// GetFileSize returns the size of a file
+func (r *LocalFileReader) GetFileSize(filename string) (int64, error) <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if err := r.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                return 0, fmt.Errorf("invalid filename: %w", err)
+        }</span>
+
+        // Guard clause: check if file exists
+        <span class="cov0" title="0">if !r.FileExists(filename) </span><span class="cov0" title="0">{
+                return 0, fmt.Errorf("file does not exist: %s", filename)
+        }</span>
+
+        <span class="cov0" title="0">fullPath := r.getFullPath(filename)
+        stat, err := os.Stat(fullPath)
+        if err != nil </span><span class="cov0" title="0">{
+                return 0, fmt.Errorf("failed to get file size for %s: %w", filename, err)
+        }</span>
+
+        <span class="cov0" title="0">return stat.Size(), nil</span>
+}
+
+// GetFileModTime returns the modification time of a file
+func (r *LocalFileReader) GetFileModTime(filename string) (time.Time, error) <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if err := r.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                return time.Time{}, fmt.Errorf("invalid filename: %w", err)
+        }</span>
+
+        // Guard clause: check if file exists
+        <span class="cov0" title="0">if !r.FileExists(filename) </span><span class="cov0" title="0">{
+                return time.Time{}, fmt.Errorf("file does not exist: %s", filename)
+        }</span>
+
+        <span class="cov0" title="0">fullPath := r.getFullPath(filename)
+        stat, err := os.Stat(fullPath)
+        if err != nil </span><span class="cov0" title="0">{
+                return time.Time{}, fmt.Errorf("failed to get file mod time for %s: %w", filename, err)
+        }</span>
+
+        <span class="cov0" title="0">return stat.ModTime(), nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+        "path/filepath"
+        "strings"
+        "time"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// ValidateFilenameAndExtension validates filename and checks extension
+func ValidateFilenameAndExtension(filename string, supportedExtensions []string) bool <span class="cov0" title="0">{
+        // Guard clause: empty filename
+        if filename == "" </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">ext := GetFileExtension(filename)
+        return supportsExtension(ext, supportedExtensions)</span>
+}
+
+// ValidateContextAndInput validates context and input parameters
+func ValidateContextAndInput(ctx context.Context, filename string, content []byte) error <span class="cov0" title="0">{
+        // Guard clause: context cancelled
+        if ctx.Err() != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("context cancelled: %w", ctx.Err())
+        }</span>
+        
+        // Guard clause: empty filename
+        <span class="cov0" title="0">if filename == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename cannot be empty")
+        }</span>
+        
+        // Guard clause: nil content
+        <span class="cov0" title="0">if content == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("content cannot be nil")
+        }</span>
+        
+        <span class="cov0" title="0">return nil</span>
+}
+
+// GetFileExtension extracts extension from filename
+func GetFileExtension(filename string) string <span class="cov0" title="0">{
+        ext := filepath.Ext(filename)
+        return strings.TrimPrefix(strings.ToLower(ext), ".")
+}</span>
+
+// supportsExtension checks if extension is supported
+func supportsExtension(extension string, supportedExtensions []string) bool <span class="cov0" title="0">{
+        for _, ext := range supportedExtensions </span><span class="cov0" title="0">{
+                if ext == extension </span><span class="cov0" title="0">{
+                        return true
+                }</span>
+        }
+        <span class="cov0" title="0">return false</span>
+}
+
+// copyExtensions returns a copy of extensions slice
+func copyExtensions(extensions []string) []string <span class="cov0" title="0">{
+        result := make([]string, len(extensions))
+        copy(result, extensions)
+        return result
+}</span>
+
+// createConfigData creates ConfigData from parsed content
+func createConfigData(filename, format string, data map[string]interface{}) *models.ConfigData <span class="cov0" title="0">{
+        return &amp;models.ConfigData{
+                Filename:  filename,
+                Format:    format,
+                Data:      data,
+                Metadata:  createMetadata(filename, format, data),
+                Timestamp: time.Now(),
+        }
+}</span>
+
+// createMetadata creates metadata for the config data
+func createMetadata(filename, format string, data map[string]interface{}) map[string]interface{} <span class="cov0" title="0">{
+        metadata := map[string]interface{}{
+                "processor":  format,
+                "file_size":  len(data),
+                "key_count":  countKeys(data),
+                "has_nested": hasNestedData(data),
+        }
+
+        // Add file-specific metadata only if filename is provided
+        if filename != "" </span><span class="cov0" title="0">{
+                metadata["basename"] = filepath.Base(filename)
+                metadata["dirname"] = filepath.Dir(filename)
+        }</span>
+
+        <span class="cov0" title="0">return metadata</span>
+}
+
+// countKeys counts the number of top-level keys
+func countKeys(data map[string]interface{}) int <span class="cov0" title="0">{
+        if data == nil </span><span class="cov0" title="0">{
+                return 0
+        }</span>
+        <span class="cov0" title="0">return len(data)</span>
+}
+
+// hasNestedData checks if the data contains nested structures
+func hasNestedData(data map[string]interface{}) bool <span class="cov0" title="0">{
+        if data == nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">for _, value := range data </span><span class="cov0" title="0">{
+                switch v := value.(type) </span>{
+                case map[string]interface{}:<span class="cov0" title="0">
+                        return true</span>
+                case []interface{}:<span class="cov0" title="0">
+                        if len(v) &gt; 0 </span><span class="cov0" title="0">{
+                                return true
+                        }</span>
+                }
+        }
+
+        <span class="cov0" title="0">return false</span>
+}
+
+// removeQuotes removes quotes from a string value
+func removeQuotes(value string) string <span class="cov0" title="0">{
+        // Guard clause: empty value
+        if value == "" </span><span class="cov0" title="0">{
+                return value
+        }</span>
+        
+        // Guard clause: value too short for quotes
+        <span class="cov0" title="0">if len(value) &lt; 2 </span><span class="cov0" title="0">{
+                return value
+        }</span>
+        
+        // Check for double quotes
+        <span class="cov0" title="0">if strings.HasPrefix(value, "\"") &amp;&amp; strings.HasSuffix(value, "\"") </span><span class="cov0" title="0">{
+                return value[1 : len(value)-1]
+        }</span>
+        
+        // Check for single quotes
+        <span class="cov0" title="0">if strings.HasPrefix(value, "'") &amp;&amp; strings.HasSuffix(value, "'") </span><span class="cov0" title="0">{
+                return value[1 : len(value)-1]
+        }</span>
+        
+        <span class="cov0" title="0">return value</span>
+}
+
+// isEmptyContent checks if content is empty
+func isEmptyContent(content []byte) bool <span class="cov0" title="0">{
+        return len(content) == 0
+}</span>
+
+// createEmptyResult creates an empty result map
+func createEmptyResult() map[string]interface{} <span class="cov0" title="0">{
+        return make(map[string]interface{})
+}</span>
+
+// splitLines splits content into lines
+func splitLines(content []byte) []string <span class="cov0" title="0">{
+        return strings.Split(string(content), "\n")
+}</span>
+
+// trimLine trims whitespace from a line
+func trimLine(line string) string <span class="cov0" title="0">{
+        return strings.TrimSpace(line)
+}</span>
+
+// isEmptyLine checks if a line is empty or a comment
+func isEmptyLine(line string) bool <span class="cov0" title="0">{
+        return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+}</span>
+
+// findKeyValueSeparator finds the separator in a key-value line
+func findKeyValueSeparator(line string) int <span class="cov0" title="0">{
+        return strings.Index(line, "=")
+}</span>
+
+// extractKeyValue extracts key and value from a line
+func extractKeyValue(line string, separatorIndex int) (string, string) <span class="cov0" title="0">{
+        key := strings.TrimSpace(line[:separatorIndex])
+        value := strings.TrimSpace(line[separatorIndex+1:])
+        return key, value
+}</span>
+
+// isValidKey checks if a key is valid
+func isValidKey(key string) bool <span class="cov0" title="0">{
+        return key != ""
+}</span>
+
+// parseKeyValueContent parses key-value content with comment detection
+func parseKeyValueContent(content []byte, isComment func(string) bool) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if isEmptyContent(content) </span><span class="cov0" title="0">{
+                return createEmptyResult(), nil
+        }</span>
+
+        <span class="cov0" title="0">result := createEmptyResult()
+        lines := splitLines(content)
+
+        for _, line := range lines </span><span class="cov0" title="0">{
+                trimmedLine := trimLine(line)
+
+                // Skip empty lines and comments
+                if isEmptyLine(trimmedLine) || isComment(trimmedLine) </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+
+                // Parse key-value pair
+                <span class="cov0" title="0">if key, value, ok := parseKeyValue(trimmedLine); ok </span><span class="cov0" title="0">{
+                        result[key] = removeQuotes(value)
+                }</span>
+        }
+
+        <span class="cov0" title="0">return result, nil</span>
+}
+
+// parseKeyValue parses a key-value pair from a line
+func parseKeyValue(line string) (string, string, bool) <span class="cov0" title="0">{
+        separatorIndex := findKeyValueSeparator(line)
+        if separatorIndex == -1 </span><span class="cov0" title="0">{
+                return "", "", false
+        }</span>
+
+        <span class="cov0" title="0">key, value := extractKeyValue(line, separatorIndex)
+        return key, value, isValidKey(key)</span>
+}
+
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+        "strings"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// ENVProcessor implements FileProcessor for ENV files
+type ENVProcessor struct {
+        supportedExtensions []string
+}
+
+// NewENVProcessor creates a new ENV processor
+func NewENVProcessor() *ENVProcessor <span class="cov0" title="0">{
+        return &amp;ENVProcessor{
+                supportedExtensions: []string{"env"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *ENVProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        return ValidateFilenameAndExtension(filename, p.supportedExtensions)
+}</span>
+
+// Process processes an ENV file
+func (p *ENVProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if err := ValidateContextAndInput(ctx, filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">data, err := parseENVContent(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse ENV: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return createConfigData(filename, "env", data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *ENVProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        return copyExtensions(p.supportedExtensions)
+}</span>
+
+// parseENVContent parses ENV content
+func parseENVContent(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if isEmptyContent(content) </span><span class="cov0" title="0">{
+                return createEmptyResult(), nil
+        }</span>
+
+        <span class="cov0" title="0">return parseKeyValueContent(content, isENVComment)</span>
+}
+
+// isENVComment checks if a line is a comment in ENV format
+func isENVComment(line string) bool <span class="cov0" title="0">{
+        return strings.HasPrefix(line, "#")
+}</span>
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+
+        "github.com/hashicorp/hcl/v2/hclsimple"
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// HCLProcessor implements FileProcessor for HCL files
+type HCLProcessor struct {
+        supportedExtensions []string
+}
+
+// NewHCLProcessor creates a new HCL processor
+func NewHCLProcessor() *HCLProcessor <span class="cov0" title="0">{
+        return &amp;HCLProcessor{
+                supportedExtensions: []string{"hcl"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *HCLProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        return ValidateFilenameAndExtension(filename, p.supportedExtensions)
+}</span>
+
+// Process processes an HCL file
+func (p *HCLProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if err := ValidateContextAndInput(ctx, filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">data, err := parseHCLContent(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse HCL: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return createConfigData(filename, "hcl", data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *HCLProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        return copyExtensions(p.supportedExtensions)
+}</span>
+
+// parseHCLContent parses HCL content
+func parseHCLContent(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if isEmptyContent(content) </span><span class="cov0" title="0">{
+                return createEmptyResult(), nil
+        }</span>
+
+        <span class="cov0" title="0">var result map[string]interface{}
+        // hclsimple.Decode requires a filename for context, even if it's a dummy
+        if err := hclsimple.Decode("config.hcl", content, nil, &amp;result); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse HCL: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return result, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+        "strings"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// INIProcessor implements FileProcessor for INI files
+type INIProcessor struct {
+        supportedExtensions []string
+}
+
+// NewINIProcessor creates a new INI processor
+func NewINIProcessor() *INIProcessor <span class="cov0" title="0">{
+        return &amp;INIProcessor{
+                supportedExtensions: []string{"ini"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *INIProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        return ValidateFilenameAndExtension(filename, p.supportedExtensions)
+}</span>
+
+// Process processes an INI file
+func (p *INIProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if err := ValidateContextAndInput(ctx, filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">data, err := parseINIContent(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse INI: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return createConfigData(filename, "ini", data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *INIProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        return copyExtensions(p.supportedExtensions)
+}</span>
+
+// parseINIContent parses INI content
+func parseINIContent(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if isEmptyContent(content) </span><span class="cov0" title="0">{
+                return createEmptyResult(), nil
+        }</span>
+
+        <span class="cov0" title="0">return parseINIContentWithSections(content), nil</span>
+}
+
+// parseINIContentWithSections parses INI content with sections
+func parseINIContentWithSections(content []byte) map[string]interface{} <span class="cov0" title="0">{
+        result := createEmptyResult()
+        currentSection := ""
+        lines := splitLines(content)
+
+        for _, line := range lines </span><span class="cov0" title="0">{
+                trimmedLine := trimLine(line)
+                
+                // Skip empty lines and comments
+                if isEmptyLine(trimmedLine) || isINIComment(trimmedLine) </span><span class="cov0" title="0">{
+                        continue</span>
+                }
+
+                // Check for section header
+                <span class="cov0" title="0">if isINISection(trimmedLine) </span><span class="cov0" title="0">{
+                        currentSection = extractINISection(trimmedLine)
+                        result[currentSection] = createEmptyResult()
+                        continue</span>
+                }
+
+                // Parse key-value pair
+                <span class="cov0" title="0">if key, value, ok := parseINIKeyValue(trimmedLine); ok </span><span class="cov0" title="0">{
+                        setINIValue(result, currentSection, key, value)
+                }</span>
+        }
+
+        <span class="cov0" title="0">return result</span>
+}
+
+// isINIComment checks if a line is a comment in INI format
+func isINIComment(line string) bool <span class="cov0" title="0">{
+        return strings.HasPrefix(line, ";") || strings.HasPrefix(line, "#")
+}</span>
+
+// isINISection checks if a line is a section header
+func isINISection(line string) bool <span class="cov0" title="0">{
+        return strings.HasPrefix(line, "[") &amp;&amp; strings.HasSuffix(line, "]")
+}</span>
+
+// extractINISection extracts section name from section header
+func extractINISection(line string) string <span class="cov0" title="0">{
+        return line[1 : len(line)-1]
+}</span>
+
+// parseINIKeyValue parses a key-value pair from a line
+func parseINIKeyValue(line string) (string, string, bool) <span class="cov0" title="0">{
+        separatorIndex := findKeyValueSeparator(line)
+        if separatorIndex == -1 </span><span class="cov0" title="0">{
+                return "", "", false
+        }</span>
+
+        <span class="cov0" title="0">key, value := extractKeyValue(line, separatorIndex)
+        return key, value, isValidKey(key)</span>
+}
+
+// setINIValue sets a value in the appropriate section
+func setINIValue(result map[string]interface{}, section, key, value string) <span class="cov0" title="0">{
+        cleanValue := removeQuotes(value)
+        
+        if section != "" </span><span class="cov0" title="0">{
+                if sectionMap, ok := result[section].(map[string]interface{}); ok </span><span class="cov0" title="0">{
+                        sectionMap[key] = cleanValue
+                }</span>
+        } else<span class="cov0" title="0"> {
+                result[key] = cleanValue
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package parsers
+
+import (
+        "context"
+        "encoding/json"
+        "fmt"
+        "path/filepath"
+        "strings"
+        "time"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// JSONProcessor implements FileProcessor for JSON files
+type JSONProcessor struct {
+        supportedExtensions []string
+}
+
+// NewJSONProcessor creates a new JSON processor
+func NewJSONProcessor() *JSONProcessor <span class="cov0" title="0">{
+        return &amp;JSONProcessor{
+                supportedExtensions: []string{"json"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *JSONProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if filename == "" </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">ext := p.getFileExtension(filename)
+        return p.supportsExtension(ext)</span>
+}
+
+// Process processes a JSON file
+func (p *JSONProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        // Guard clause: validate context
+        if ctx.Err() != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+        }</span>
+
+        // Guard clause: validate input
+        <span class="cov0" title="0">if err := p.validateInput(filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid input: %w", err)
+        }</span>
+
+        // Parse JSON content
+        <span class="cov0" title="0">data, err := p.parseJSON(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse JSON: %w", err)
+        }</span>
+
+        // Create config data
+        <span class="cov0" title="0">return p.createConfigData(filename, data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *JSONProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        // Return a copy to prevent external modification
+        extensions := make([]string, len(p.supportedExtensions))
+        copy(extensions, p.supportedExtensions)
+        return extensions
+}</span>
+
+// parseJSON parses JSON content into a map
+func (p *JSONProcessor) parseJSON(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if len(content) == 0 </span><span class="cov0" title="0">{
+                return make(map[string]interface{}), nil
+        }</span>
+
+        <span class="cov0" title="0">var result map[string]interface{}
+        if err := json.Unmarshal(content, &amp;result); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("JSON unmarshal failed: %w", err)
+        }</span>
+
+        // Handle null result
+        <span class="cov0" title="0">if result == nil </span><span class="cov0" title="0">{
+                return make(map[string]interface{}), nil
+        }</span>
+
+        <span class="cov0" title="0">return result, nil</span>
+}
+
+// createConfigData creates ConfigData from parsed content
+func (p *JSONProcessor) createConfigData(filename string, data map[string]interface{}) *models.ConfigData <span class="cov0" title="0">{
+        return &amp;models.ConfigData{
+                Filename:  filename,
+                Format:    "json",
+                Data:      data,
+                Metadata:  p.createMetadata(filename, data),
+                Timestamp: time.Now(),
+        }
+}</span>
+
+// createMetadata creates metadata for the config data
+func (p *JSONProcessor) createMetadata(filename string, data map[string]interface{}) map[string]interface{} <span class="cov0" title="0">{
+        metadata := map[string]interface{}{
+                "processor":    "json",
+                "file_size":    len(data),
+                "key_count":    p.countKeys(data),
+                "has_nested":   p.hasNestedData(data),
+                "is_valid":     p.isValidJSON(data),
+        }
+
+        // Add file-specific metadata
+        if filename != "" </span><span class="cov0" title="0">{
+                metadata["basename"] = filepath.Base(filename)
+                metadata["dirname"] = filepath.Dir(filename)
+        }</span>
+
+        <span class="cov0" title="0">return metadata</span>
+}
+
+// validateInput validates input parameters
+func (p *JSONProcessor) validateInput(filename string, content []byte) error <span class="cov0" title="0">{
+        if filename == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename cannot be empty")
+        }</span>
+        <span class="cov0" title="0">if content == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("content cannot be nil")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// getFileExtension extracts extension from filename
+func (p *JSONProcessor) getFileExtension(filename string) string <span class="cov0" title="0">{
+        ext := filepath.Ext(filename)
+        return strings.TrimPrefix(strings.ToLower(ext), ".")
+}</span>
+
+// supportsExtension checks if extension is supported
+func (p *JSONProcessor) supportsExtension(extension string) bool <span class="cov0" title="0">{
+        for _, ext := range p.supportedExtensions </span><span class="cov0" title="0">{
+                if ext == extension </span><span class="cov0" title="0">{
+                        return true
+                }</span>
+        }
+        <span class="cov0" title="0">return false</span>
+}
+
+// countKeys counts the number of top-level keys
+func (p *JSONProcessor) countKeys(data map[string]interface{}) int <span class="cov0" title="0">{
+        if data == nil </span><span class="cov0" title="0">{
+                return 0
+        }</span>
+        <span class="cov0" title="0">return len(data)</span>
+}
+
+// hasNestedData checks if the data contains nested structures
+func (p *JSONProcessor) hasNestedData(data map[string]interface{}) bool <span class="cov0" title="0">{
+        if data == nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">for _, value := range data </span><span class="cov0" title="0">{
+                switch v := value.(type) </span>{
+                case map[string]interface{}:<span class="cov0" title="0">
+                        return true</span>
+                case []interface{}:<span class="cov0" title="0">
+                        if len(v) &gt; 0 </span><span class="cov0" title="0">{
+                                return true
+                        }</span>
+                }
+        }
+
+        <span class="cov0" title="0">return false</span>
+}
+
+// isValidJSON checks if the data is valid JSON structure
+func (p *JSONProcessor) isValidJSON(data map[string]interface{}) bool <span class="cov0" title="0">{
+        // Try to marshal and unmarshal to validate structure
+        _, err := json.Marshal(data)
+        return err == nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package parsers
+
+import (
+        "fmt"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// RegisterAllProcessors registers all available processors with the registry
+func RegisterAllProcessors(registry *ParserRegistry) error <span class="cov0" title="0">{
+        // Guard clause: validate registry
+        if registry == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("registry cannot be nil")
+        }</span>
+
+        // Register all processors
+        <span class="cov0" title="0">processors := []models.FileProcessor{
+                NewYAMLProcessor(),
+                NewJSONProcessor(),
+                NewTOMLProcessor(),
+                NewPropertiesProcessor(),
+                NewINIProcessor(),
+                NewHCLProcessor(),
+                NewXMLProcessor(),
+                NewENVProcessor(),
+        }
+
+        // Register each processor
+        for _, processor := range processors </span><span class="cov0" title="0">{
+                if err := registry.RegisterProcessor(processor); err != nil </span><span class="cov0" title="0">{
+                        return fmt.Errorf("failed to register processor: %w", err)
+                }</span>
+        }
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+        "strings"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// PropertiesProcessor implements FileProcessor for Properties files
+type PropertiesProcessor struct {
+        supportedExtensions []string
+}
+
+// NewPropertiesProcessor creates a new Properties processor
+func NewPropertiesProcessor() *PropertiesProcessor <span class="cov0" title="0">{
+        return &amp;PropertiesProcessor{
+                supportedExtensions: []string{"properties"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *PropertiesProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        return ValidateFilenameAndExtension(filename, p.supportedExtensions)
+}</span>
+
+// Process processes a Properties file
+func (p *PropertiesProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if err := ValidateContextAndInput(ctx, filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">data, err := parsePropertiesContent(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse Properties: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return createConfigData(filename, "properties", data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *PropertiesProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        return copyExtensions(p.supportedExtensions)
+}</span>
+
+// parsePropertiesContent parses Properties content
+func parsePropertiesContent(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if isEmptyContent(content) </span><span class="cov0" title="0">{
+                return createEmptyResult(), nil
+        }</span>
+
+        <span class="cov0" title="0">return parseKeyValueContent(content, isPropertiesComment)</span>
+}
+
+// isPropertiesComment checks if a line is a comment in Properties format
+func isPropertiesComment(line string) bool <span class="cov0" title="0">{
+        return strings.HasPrefix(line, "#") || strings.HasPrefix(line, "!")
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package parsers
+
+import (
+        "fmt"
+        "path/filepath"
+        "strings"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// ParserRegistry manages file processors
+type ParserRegistry struct {
+        processors []models.FileProcessor
+        byExtension map[string]models.FileProcessor
+}
+
+// NewParserRegistry creates a new parser registry with all processors registered
+func NewParserRegistry() *ParserRegistry <span class="cov0" title="0">{
+        registry := &amp;ParserRegistry{
+                processors:  make([]models.FileProcessor, 0),
+                byExtension: make(map[string]models.FileProcessor),
+        }
+
+        // Register all processors
+        if err := RegisterAllProcessors(registry); err != nil </span><span class="cov0" title="0">{
+                panic(fmt.Sprintf("Failed to register processors: %v", err))</span>
+        }
+
+        <span class="cov0" title="0">return registry</span>
+}
+
+// RegisterProcessor registers a new processor
+func (r *ParserRegistry) RegisterProcessor(processor models.FileProcessor) error <span class="cov0" title="0">{
+        // Guard clause: validate processor
+        if processor == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("processor cannot be nil")
+        }</span>
+
+        // Guard clause: check for conflicts
+        <span class="cov0" title="0">if err := r.validateNoConflicts(processor); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("processor conflicts with existing: %w", err)
+        }</span>
+
+        // Register processor
+        <span class="cov0" title="0">r.processors = append(r.processors, processor)
+
+        // Register by extension for fast lookup
+        for _, ext := range processor.GetSupportedExtensions() </span><span class="cov0" title="0">{
+                r.byExtension[ext] = processor
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+// GetProcessor returns the appropriate processor for a filename
+func (r *ParserRegistry) GetProcessor(filename string) (models.FileProcessor, error) <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if filename == "" </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("filename cannot be empty")
+        }</span>
+
+        // Get file extension
+        <span class="cov0" title="0">ext := r.getFileExtension(filename)
+        if ext == "" </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("no extension found in filename: %s", filename)
+        }</span>
+
+        // Look up processor by extension
+        <span class="cov0" title="0">processor, exists := r.byExtension[ext]
+        if !exists </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("no processor found for extension: %s", ext)
+        }</span>
+
+        <span class="cov0" title="0">return processor, nil</span>
+}
+
+// GetProcessorByExtension returns processor by extension
+func (r *ParserRegistry) GetProcessorByExtension(extension string) (models.FileProcessor, error) <span class="cov0" title="0">{
+        // Guard clause: validate extension
+        if extension == "" </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("extension cannot be empty")
+        }</span>
+
+        // Normalize extension (remove leading dot if present)
+        <span class="cov0" title="0">ext := r.normalizeExtension(extension)
+
+        processor, exists := r.byExtension[ext]
+        if !exists </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("no processor found for extension: %s", ext)
+        }</span>
+
+        <span class="cov0" title="0">return processor, nil</span>
+}
+
+// GetAllProcessors returns all registered processors
+func (r *ParserRegistry) GetAllProcessors() []models.FileProcessor <span class="cov0" title="0">{
+        // Return a copy to prevent external modification
+        processors := make([]models.FileProcessor, len(r.processors))
+        copy(processors, r.processors)
+        return processors
+}</span>
+
+// GetSupportedExtensions returns all supported extensions
+func (r *ParserRegistry) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        extensions := make([]string, 0, len(r.byExtension))
+        for ext := range r.byExtension </span><span class="cov0" title="0">{
+                extensions = append(extensions, ext)
+        }</span>
+        <span class="cov0" title="0">return extensions</span>
+}
+
+// HasProcessor checks if a processor is registered for an extension
+func (r *ParserRegistry) HasProcessor(extension string) bool <span class="cov0" title="0">{
+        ext := r.normalizeExtension(extension)
+        _, exists := r.byExtension[ext]
+        return exists
+}</span>
+
+// GetProcessorCount returns the number of registered processors
+func (r *ParserRegistry) GetProcessorCount() int <span class="cov0" title="0">{
+        return len(r.processors)
+}</span>
+
+// validateNoConflicts checks if a processor conflicts with existing ones
+func (r *ParserRegistry) validateNoConflicts(newProcessor models.FileProcessor) error <span class="cov0" title="0">{
+        newExtensions := newProcessor.GetSupportedExtensions()
+        
+        for _, existing := range r.processors </span><span class="cov0" title="0">{
+                existingExtensions := existing.GetSupportedExtensions()
+                if r.hasExtensionOverlap(newExtensions, existingExtensions) </span><span class="cov0" title="0">{
+                        return fmt.Errorf("extension conflict between processors")
+                }</span>
+        }
+        
+        <span class="cov0" title="0">return nil</span>
+}
+
+// hasExtensionOverlap checks if two extension lists overlap
+func (r *ParserRegistry) hasExtensionOverlap(ext1, ext2 []string) bool <span class="cov0" title="0">{
+        for _, e1 := range ext1 </span><span class="cov0" title="0">{
+                for _, e2 := range ext2 </span><span class="cov0" title="0">{
+                        if e1 == e2 </span><span class="cov0" title="0">{
+                                return true
+                        }</span>
+                }
+        }
+        <span class="cov0" title="0">return false</span>
+}
+
+// getFileExtension extracts extension from filename
+func (r *ParserRegistry) getFileExtension(filename string) string <span class="cov0" title="0">{
+        ext := filepath.Ext(filename)
+        return r.normalizeExtension(ext)
+}</span>
+
+// normalizeExtension normalizes an extension (removes leading dot, converts to lowercase)
+func (r *ParserRegistry) normalizeExtension(extension string) string <span class="cov0" title="0">{
+        ext := strings.TrimPrefix(extension, ".")
+        return strings.ToLower(ext)
+}</span>
+
+// CreateDefaultRegistry creates a registry with default processors
+func CreateDefaultRegistry() (*ParserRegistry, error) <span class="cov0" title="0">{
+        registry := NewParserRegistry()
+
+        // Register default processors
+        processors := []models.FileProcessor{
+                NewYAMLProcessor(),
+                NewJSONProcessor(),
+                NewTOMLProcessor(),
+                NewPropertiesProcessor(),
+                NewINIProcessor(),
+                NewHCLProcessor(),
+                NewXMLProcessor(),
+                NewENVProcessor(),
+        }
+
+        for _, processor := range processors </span><span class="cov0" title="0">{
+                if err := registry.RegisterProcessor(processor); err != nil </span><span class="cov0" title="0">{
+                        return nil, fmt.Errorf("failed to register processor: %w", err)
+                }</span>
+        }
+
+        <span class="cov0" title="0">return registry, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package parsers
+
+import (
+        "context"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// MockFileProcessor for testing
+type MockFileProcessor struct {
+        CanProcessFunc     func(filename string) bool
+        ProcessFunc        func(ctx context.Context, filename string, content []byte) (*models.ConfigData, error)
+        GetExtensionsFunc  func() []string
+        ProcessedFiles     []string
+        SupportedExts      []string
+}
+
+func (m *MockFileProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        m.ProcessedFiles = append(m.ProcessedFiles, filename)
+        if m.CanProcessFunc != nil </span><span class="cov0" title="0">{
+                return m.CanProcessFunc(filename)
+        }</span>
+        <span class="cov0" title="0">return true</span>
+}
+
+func (m *MockFileProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if m.ProcessFunc != nil </span><span class="cov0" title="0">{
+                return m.ProcessFunc(ctx, filename, content)
+        }</span>
+        <span class="cov0" title="0">return &amp;models.ConfigData{
+                Filename: filename,
+                Format:   "mock",
+                Data:     map[string]interface{}{"mock": "data"},
+        }, nil</span>
+}
+
+func (m *MockFileProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        if m.GetExtensionsFunc != nil </span><span class="cov0" title="0">{
+                return m.GetExtensionsFunc()
+        }</span>
+        <span class="cov0" title="0">if m.SupportedExts != nil </span><span class="cov0" title="0">{
+                return m.SupportedExts
+        }</span>
+        <span class="cov0" title="0">return []string{"mock"}</span>
+}
+
+// MockFileReader for testing
+type MockFileReader struct {
+        ReadFileFunc   func(filename string) ([]byte, error)
+        Files          map[string][]byte
+        ReadFileCount  int
+}
+
+func (m *MockFileReader) ReadFile(filename string) ([]byte, error) <span class="cov0" title="0">{
+        m.ReadFileCount++
+        if m.ReadFileFunc != nil </span><span class="cov0" title="0">{
+                return m.ReadFileFunc(filename)
+        }</span>
+        <span class="cov0" title="0">if m.Files != nil </span><span class="cov0" title="0">{
+                if content, exists := m.Files[filename]; exists </span><span class="cov0" title="0">{
+                        return content, nil
+                }</span>
+        }
+        <span class="cov0" title="0">return []byte("mock content"), nil</span>
+}
+
+// TestHelper provides common test utilities
+type TestHelper struct{}
+
+// CreateTestContent creates test content for different formats
+func (h *TestHelper) CreateTestContent(format string) []byte <span class="cov0" title="0">{
+        switch format </span>{
+        case "yaml":<span class="cov0" title="0">
+                return []byte("app:\n  name: test\n  version: 1.0")</span>
+        case "json":<span class="cov0" title="0">
+                return []byte(`{"app": {"name": "test", "version": "1.0"}}`)</span>
+        case "toml":<span class="cov0" title="0">
+                return []byte("[app]\nname = 'test'\nversion = '1.0'")</span>
+        case "properties":<span class="cov0" title="0">
+                return []byte("app.name=test\napp.version=1.0")</span>
+        case "ini":<span class="cov0" title="0">
+                return []byte("[app]\nname=test\nversion=1.0")</span>
+        case "env":<span class="cov0" title="0">
+                return []byte("APP_NAME=test\nAPP_VERSION=1.0")</span>
+        default:<span class="cov0" title="0">
+                return []byte("mock content")</span>
+        }
+}
+
+// CreateTestConfigData creates test config data
+func (h *TestHelper) CreateTestConfigData(filename, format string) *models.ConfigData <span class="cov0" title="0">{
+        return &amp;models.ConfigData{
+                Filename: filename,
+                Format:   format,
+                Data: map[string]interface{}{
+                        "app": map[string]interface{}{
+                                "name":    "test",
+                                "version": "1.0",
+                        },
+                },
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+
+        "github.com/BurntSushi/toml"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// TOMLProcessor implements FileProcessor for TOML files
+type TOMLProcessor struct {
+        supportedExtensions []string
+}
+
+// NewTOMLProcessor creates a new TOML processor
+func NewTOMLProcessor() *TOMLProcessor <span class="cov0" title="0">{
+        return &amp;TOMLProcessor{
+                supportedExtensions: []string{"toml"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *TOMLProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        return ValidateFilenameAndExtension(filename, p.supportedExtensions)
+}</span>
+
+// Process processes a TOML file
+func (p *TOMLProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if err := ValidateContextAndInput(ctx, filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">data, err := parseTOMLContent(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse TOML: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return createConfigData(filename, "toml", data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *TOMLProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        return copyExtensions(p.supportedExtensions)
+}</span>
+
+// parseTOMLContent parses TOML content into a map
+func parseTOMLContent(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        if len(content) == 0 </span><span class="cov0" title="0">{
+                return make(map[string]interface{}), nil
+        }</span>
+
+        <span class="cov0" title="0">var result map[string]interface{}
+        if err := toml.Unmarshal(content, &amp;result); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("TOML unmarshal failed: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">if result == nil </span><span class="cov0" title="0">{
+                return make(map[string]interface{}), nil
+        }</span>
+
+        <span class="cov0" title="0">return result, nil</span>
+}
+
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package parsers
+
+import (
+        "context"
+        "encoding/xml"
+        "fmt"
+        "strings"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// XMLProcessor implements FileProcessor for XML files
+type XMLProcessor struct {
+        supportedExtensions []string
+}
+
+// NewXMLProcessor creates a new XML processor
+func NewXMLProcessor() *XMLProcessor <span class="cov0" title="0">{
+        return &amp;XMLProcessor{
+                supportedExtensions: []string{"xml"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *XMLProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        return ValidateFilenameAndExtension(filename, p.supportedExtensions)
+}</span>
+
+// Process processes an XML file
+func (p *XMLProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        if err := ValidateContextAndInput(ctx, filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">data, err := parseXMLContent(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse XML: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return createConfigData(filename, "xml", data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *XMLProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        return copyExtensions(p.supportedExtensions)
+}</span>
+
+// parseXMLContent parses XML content
+func parseXMLContent(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if isEmptyContent(content) </span><span class="cov0" title="0">{
+                return createEmptyResult(), nil
+        }</span>
+
+        <span class="cov0" title="0">var data map[string]interface{}
+        decoder := xml.NewDecoder(strings.NewReader(string(content)))
+        err := decoder.Decode(&amp;data) // This will decode into a generic map
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse XML: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return data, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package parsers
+
+import (
+        "context"
+        "fmt"
+        "path/filepath"
+        "strings"
+        "time"
+
+        "gopkg.in/yaml.v3"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// YAMLProcessor implements FileProcessor for YAML files
+type YAMLProcessor struct {
+        supportedExtensions []string
+}
+
+// NewYAMLProcessor creates a new YAML processor
+func NewYAMLProcessor() *YAMLProcessor <span class="cov0" title="0">{
+        return &amp;YAMLProcessor{
+                supportedExtensions: []string{"yaml", "yml"},
+        }
+}</span>
+
+// CanProcess checks if this processor can handle the given filename
+func (p *YAMLProcessor) CanProcess(filename string) bool <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if filename == "" </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">ext := p.getFileExtension(filename)
+        return p.supportsExtension(ext)</span>
+}
+
+// Process processes a YAML file
+func (p *YAMLProcessor) Process(ctx context.Context, filename string, content []byte) (*models.ConfigData, error) <span class="cov0" title="0">{
+        // Guard clause: validate context
+        if ctx.Err() != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("context cancelled: %w", ctx.Err())
+        }</span>
+
+        // Guard clause: validate input
+        <span class="cov0" title="0">if err := p.validateInput(filename, content); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid input: %w", err)
+        }</span>
+
+        // Parse YAML content
+        <span class="cov0" title="0">data, err := p.parseYAML(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to parse YAML: %w", err)
+        }</span>
+
+        // Create config data
+        <span class="cov0" title="0">return p.createConfigData(filename, data), nil</span>
+}
+
+// GetSupportedExtensions returns supported file extensions
+func (p *YAMLProcessor) GetSupportedExtensions() []string <span class="cov0" title="0">{
+        // Return a copy to prevent external modification
+        extensions := make([]string, len(p.supportedExtensions))
+        copy(extensions, p.supportedExtensions)
+        return extensions
+}</span>
+
+// parseYAML parses YAML content into a map
+func (p *YAMLProcessor) parseYAML(content []byte) (map[string]interface{}, error) <span class="cov0" title="0">{
+        // Guard clause: empty content
+        if len(content) == 0 </span><span class="cov0" title="0">{
+                return make(map[string]interface{}), nil
+        }</span>
+
+        <span class="cov0" title="0">var result map[string]interface{}
+        if err := yaml.Unmarshal(content, &amp;result); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("YAML unmarshal failed: %w", err)
+        }</span>
+
+        // Handle null result
+        <span class="cov0" title="0">if result == nil </span><span class="cov0" title="0">{
+                return make(map[string]interface{}), nil
+        }</span>
+
+        <span class="cov0" title="0">return result, nil</span>
+}
+
+// createConfigData creates ConfigData from parsed content
+func (p *YAMLProcessor) createConfigData(filename string, data map[string]interface{}) *models.ConfigData <span class="cov0" title="0">{
+        return &amp;models.ConfigData{
+                Filename:  filename,
+                Format:    "yaml",
+                Data:      data,
+                Metadata:  p.createMetadata(filename, data),
+                Timestamp: time.Now(),
+        }
+}</span>
+
+// createMetadata creates metadata for the config data
+func (p *YAMLProcessor) createMetadata(filename string, data map[string]interface{}) map[string]interface{} <span class="cov0" title="0">{
+        metadata := map[string]interface{}{
+                "processor":    "yaml",
+                "file_size":    len(data),
+                "key_count":    p.countKeys(data),
+                "has_nested":   p.hasNestedData(data),
+        }
+
+        // Add file-specific metadata
+        if filename != "" </span><span class="cov0" title="0">{
+                metadata["basename"] = filepath.Base(filename)
+                metadata["dirname"] = filepath.Dir(filename)
+        }</span>
+
+        <span class="cov0" title="0">return metadata</span>
+}
+
+// validateInput validates input parameters
+func (p *YAMLProcessor) validateInput(filename string, content []byte) error <span class="cov0" title="0">{
+        if filename == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename cannot be empty")
+        }</span>
+        <span class="cov0" title="0">if content == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("content cannot be nil")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// getFileExtension extracts extension from filename
+func (p *YAMLProcessor) getFileExtension(filename string) string <span class="cov0" title="0">{
+        ext := filepath.Ext(filename)
+        return strings.TrimPrefix(strings.ToLower(ext), ".")
+}</span>
+
+// supportsExtension checks if extension is supported
+func (p *YAMLProcessor) supportsExtension(extension string) bool <span class="cov0" title="0">{
+        for _, ext := range p.supportedExtensions </span><span class="cov0" title="0">{
+                if ext == extension </span><span class="cov0" title="0">{
+                        return true
+                }</span>
+        }
+        <span class="cov0" title="0">return false</span>
+}
+
+// countKeys counts the number of top-level keys
+func (p *YAMLProcessor) countKeys(data map[string]interface{}) int <span class="cov0" title="0">{
+        if data == nil </span><span class="cov0" title="0">{
+                return 0
+        }</span>
+        <span class="cov0" title="0">return len(data)</span>
+}
+
+// hasNestedData checks if the data contains nested structures
+func (p *YAMLProcessor) hasNestedData(data map[string]interface{}) bool <span class="cov0" title="0">{
+        if data == nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">for _, value := range data </span><span class="cov0" title="0">{
+                switch v := value.(type) </span>{
+                case map[string]interface{}:<span class="cov0" title="0">
+                        return true</span>
+                case []interface{}:<span class="cov0" title="0">
+                        if len(v) &gt; 0 </span><span class="cov0" title="0">{
+                                return true
+                        }</span>
+                }
+        }
+
+        <span class="cov0" title="0">return false</span>
+}
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package cli
+
+import (
+        "fmt"
+
+        "github.com/spf13/cobra"
+)
+
+// NewAuditCommand creates the audit command
+func NewAuditCommand() *cobra.Command <span class="cov0" title="0">{
+        cmd := &amp;cobra.Command{
+                Use:   "audit",
+                Short: "Run comprehensive security and compliance audits on configuration files",
+                Long: `Run comprehensive security and compliance audits on configuration files.
+
+Examples:
+  praetorian audit                           # Run all audits on current directory
+  praetorian audit --type security          # Run security audit only
+  praetorian audit --config praetorian.yaml # Use specific config file
+  praetorian audit --output json            # Output in JSON format`,
+                RunE: runAudit,
+        }
+
+        // Add flags
+        cmd.Flags().StringP("config", "c", "praetorian.yaml", "Configuration file path")
+        cmd.Flags().StringP("output", "o", "text", "Output format (text, json, yaml)")
+        cmd.Flags().StringP("type", "t", "all", "Audit type (security, compliance, performance, all)")
+
+        return cmd
+}</span>
+
+// runAudit executes the audit command
+func runAudit(cmd *cobra.Command, args []string) error <span class="cov0" title="0">{
+        // Guard clause: validate command
+        if cmd == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("command cannot be nil")
+        }</span>
+
+        // Extract and validate flags
+        <span class="cov0" title="0">flags, err := extractAuditFlags(cmd)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to extract flags: %w", err)
+        }</span>
+
+        // Execute audit
+        <span class="cov0" title="0">return executeAudit(flags)</span>
+}
+
+// AuditFlags represents audit command flags
+type AuditFlags struct {
+        ConfigPath   string
+        OutputFormat string
+        AuditType    string
+}
+
+// extractAuditFlags extracts and validates flags from command
+func extractAuditFlags(cmd *cobra.Command) (*AuditFlags, error) <span class="cov0" title="0">{
+        configPath, err := cmd.Flags().GetString("config")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get config flag: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">outputFormat, err := cmd.Flags().GetString("output")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get output flag: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">auditType, err := cmd.Flags().GetString("type")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get type flag: %w", err)
+        }</span>
+
+        // Guard clause: validate config path
+        <span class="cov0" title="0">if err := ValidateConfigPath(configPath); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid config path: %w", err)
+        }</span>
+
+        // Guard clause: validate output format
+        <span class="cov0" title="0">if err := ValidateOutputFormat(outputFormat); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid output format: %w", err)
+        }</span>
+
+        // Guard clause: validate audit type
+        <span class="cov0" title="0">if err := validateAuditType(auditType); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid audit type: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;AuditFlags{
+                ConfigPath:   configPath,
+                OutputFormat: outputFormat,
+                AuditType:    auditType,
+        }, nil</span>
+}
+
+// validateAuditType validates the audit type
+func validateAuditType(auditType string) error <span class="cov0" title="0">{
+        validTypes := []string{"security", "compliance", "performance", "all"}
+        for _, valid := range validTypes </span><span class="cov0" title="0">{
+                if auditType == valid </span><span class="cov0" title="0">{
+                        return nil
+                }</span>
+        }
+        <span class="cov0" title="0">return fmt.Errorf("invalid audit type: %s, must be one of: %v", auditType, validTypes)</span>
+}
+
+// executeAudit executes the audit process
+func executeAudit(flags *AuditFlags) error <span class="cov0" title="0">{
+        // Guard clause: validate flags
+        if flags == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("flags cannot be nil")
+        }</span>
+
+        // Display audit info
+        <span class="cov0" title="0">displayAuditInfo(flags)
+
+        // TODO: Implement actual audit logic
+        fmt.Printf("✅ Audit completed successfully!\n")
+
+        return nil</span>
+}
+
+// displayAuditInfo displays audit information
+func displayAuditInfo(flags *AuditFlags) <span class="cov0" title="0">{
+        fmt.Printf("🔒 Running %s audit...\n", flags.AuditType)
+        fmt.Printf("📁 Config: %s\n", flags.ConfigPath)
+        fmt.Printf("📤 Output: %s\n", flags.OutputFormat)
+}</span>
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package cli
+
+import "github.com/spf13/cobra"
+
+// RegisterCommands registers all CLI commands with the root command
+func RegisterCommands(rootCmd *cobra.Command) <span class="cov0" title="0">{
+        // Guard clause: validate root command
+        if rootCmd == nil </span><span class="cov0" title="0">{
+                panic("root command cannot be nil")</span>
+        }
+
+        // Add all commands
+        <span class="cov0" title="0">rootCmd.AddCommand(NewValidateCommand())
+        rootCmd.AddCommand(NewAuditCommand())
+        rootCmd.AddCommand(NewInitCommand())
+        rootCmd.AddCommand(NewVersionCommand())</span>
+}</pre>
+		
+		<pre class="file" id="file16" style="display: none">package cli
+
+import (
+        "fmt"
+        "os"
+
+        "github.com/spf13/cobra"
+)
+
+// NewInitCommand creates the init command
+func NewInitCommand() *cobra.Command <span class="cov0" title="0">{
+        cmd := &amp;cobra.Command{
+                Use:   "init",
+                Short: "Initialize Praetorian configuration for your project",
+                Long: `Initialize Praetorian configuration for your project.
+
+This command creates a praetorian.yaml configuration file with sensible defaults
+for validating your configuration files across environments.
+
+Examples:
+  praetorian init                    # Create basic configuration
+  praetorian init --devsecops        # Create DevSecOps optimized configuration`,
+                RunE: runInit,
+        }
+
+        // Add flags
+        cmd.Flags().Bool("devsecops", false, "Initialize with DevSecOps optimizations")
+
+        return cmd
+}</span>
+
+// runInit executes the init command
+func runInit(cmd *cobra.Command, args []string) error <span class="cov0" title="0">{
+        // Guard clause: validate command
+        if cmd == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("command cannot be nil")
+        }</span>
+
+        // Extract and validate flags
+        <span class="cov0" title="0">flags, err := extractInitFlags(cmd)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to extract flags: %w", err)
+        }</span>
+
+        // Execute initialization
+        <span class="cov0" title="0">return executeInitialization(flags)</span>
+}
+
+// InitFlags represents init command flags
+type InitFlags struct {
+        DevSecOps bool
+}
+
+// extractInitFlags extracts and validates flags from command
+func extractInitFlags(cmd *cobra.Command) (*InitFlags, error) <span class="cov0" title="0">{
+        devsecops, err := cmd.Flags().GetBool("devsecops")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get devsecops flag: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;InitFlags{
+                DevSecOps: devsecops,
+        }, nil</span>
+}
+
+// executeInitialization executes the initialization process
+func executeInitialization(flags *InitFlags) error <span class="cov0" title="0">{
+        // Guard clause: validate flags
+        if flags == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("flags cannot be nil")
+        }</span>
+
+        // Display initialization info
+        <span class="cov0" title="0">displayInitializationInfo(flags)
+
+        // Create configuration file
+        if err := createConfigFile(flags); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to create config file: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">fmt.Printf("✅ Configuration initialized successfully!\n")
+        return nil</span>
+}
+
+// displayInitializationInfo displays initialization information
+func displayInitializationInfo(flags *InitFlags) <span class="cov0" title="0">{
+        fmt.Printf("🚀 Initializing Praetorian configuration...\n")
+        fmt.Printf("🛡️  DevSecOps mode: %t\n", flags.DevSecOps)
+        fmt.Printf("🔧 Creating config file...\n")
+}</span>
+
+// createConfigFile creates the configuration file
+func createConfigFile(flags *InitFlags) error <span class="cov0" title="0">{
+        // Guard clause: validate flags
+        if flags == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("flags cannot be nil")
+        }</span>
+
+        // Generate config content
+        <span class="cov0" title="0">content := generateConfigContent(flags.DevSecOps)
+
+        // Write file
+        return writeConfigFileContent("praetorian.yaml", content)</span>
+}
+
+// generateConfigContent generates the configuration content
+func generateConfigContent(devsecops bool) string <span class="cov0" title="0">{
+        baseContent := `# Praetorian Configuration
+version: "1.0"
+files:
+  - "config/*.yaml"
+  - "config/*.json"
+  - "config/*.toml"
+
+environments:
+  dev: "config/dev"
+  staging: "config/staging"
+  prod: "config/prod"
+`
+
+        if devsecops </span><span class="cov0" title="0">{
+                baseContent += `
+# DevSecOps specific configurations
+security:
+  secret_detection: true
+  vulnerability_scan: true
+  permission_check: true
+`
+        }</span>
+
+        <span class="cov0" title="0">return baseContent</span>
+}
+
+// writeConfigFileContent writes content to a file
+func writeConfigFileContent(filename, content string) error <span class="cov0" title="0">{
+        // Guard clause: validate filename
+        if filename == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename cannot be empty")
+        }</span>
+
+        // Guard clause: validate content
+        <span class="cov0" title="0">if content == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("content cannot be empty")
+        }</span>
+
+        // Create file
+        <span class="cov0" title="0">file, err := os.Create(filename)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to create file %s: %w", filename, err)
+        }</span>
+        <span class="cov0" title="0">defer file.Close()
+
+        // Write content
+        _, err = file.WriteString(content)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to write content to %s: %w", filename, err)
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package cli
+
+// TestableCommand defines interface for testable commands
+type TestableCommand interface {
+        Execute(flags interface{}) error
+        ValidateFlags(flags interface{}) error
+        GetCommandName() string
+}
+
+// MockFileWriter for testing file operations
+type MockFileWriter struct {
+        WriteFileFunc func(filename, content string) error
+        Files         map[string]string
+}
+
+func (m *MockFileWriter) WriteFile(filename, content string) error <span class="cov0" title="0">{
+        if m.WriteFileFunc != nil </span><span class="cov0" title="0">{
+                return m.WriteFileFunc(filename, content)
+        }</span>
+        <span class="cov0" title="0">if m.Files == nil </span><span class="cov0" title="0">{
+                m.Files = make(map[string]string)
+        }</span>
+        <span class="cov0" title="0">m.Files[filename] = content
+        return nil</span>
+}
+
+// MockValidator for testing validation operations
+type MockValidator struct {
+        ValidateFunc func(input interface{}) error
+        Validations  []interface{}
+}
+
+func (m *MockValidator) Validate(input interface{}) error <span class="cov0" title="0">{
+        m.Validations = append(m.Validations, input)
+        if m.ValidateFunc != nil </span><span class="cov0" title="0">{
+                return m.ValidateFunc(input)
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// MockConfigGenerator for testing config generation
+type MockConfigGenerator struct {
+        GenerateFunc func(options interface{}) (string, error)
+        Generated    []interface{}
+}
+
+func (m *MockConfigGenerator) GenerateConfig(options interface{}) (string, error) <span class="cov0" title="0">{
+        m.Generated = append(m.Generated, options)
+        if m.GenerateFunc != nil </span><span class="cov0" title="0">{
+                return m.GenerateFunc(options)
+        }</span>
+        <span class="cov0" title="0">return "# Mock Config\nversion: \"1.0\"", nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package cli
+
+import (
+        "fmt"
+
+        "github.com/spf13/cobra"
+)
+
+// NewValidateCommand creates the validate command
+func NewValidateCommand() *cobra.Command <span class="cov0" title="0">{
+        cmd := &amp;cobra.Command{
+                Use:   "validate",
+                Short: "Validate configuration files for consistency across environments",
+                Long: `Validate configuration files for consistency across environments.
+
+This command compares configuration files between different environments (dev, staging, prod)
+and reports missing keys, extra keys, and value differences.
+
+Examples:
+  praetorian validate                           # Validate current directory
+  praetorian validate --config praetorian.yaml # Use specific config file
+  praetorian validate --output json            # Output in JSON format
+  praetorian validate --pipeline               # CI/CD friendly output`,
+                RunE: runValidate,
+        }
+
+        // Add flags
+        cmd.Flags().StringP("config", "c", "praetorian.yaml", "Configuration file path")
+        cmd.Flags().StringP("output", "o", "text", "Output format (text, json, yaml)")
+        cmd.Flags().Bool("pipeline", false, "Enable pipeline mode for CI/CD")
+
+        return cmd
+}</span>
+
+// runValidate executes the validate command
+func runValidate(cmd *cobra.Command, args []string) error <span class="cov0" title="0">{
+        // Guard clause: validate command
+        if cmd == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("command cannot be nil")
+        }</span>
+
+        // Extract and validate flags
+        <span class="cov0" title="0">flags, err := extractValidateFlags(cmd)
+        if err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to extract flags: %w", err)
+        }</span>
+
+        // Execute validation
+        <span class="cov0" title="0">return executeValidation(flags)</span>
+}
+
+// ValidateFlags represents validation command flags
+type ValidateFlags struct {
+        ConfigPath   string
+        OutputFormat string
+        PipelineMode bool
+}
+
+// extractValidateFlags extracts and validates flags from command
+func extractValidateFlags(cmd *cobra.Command) (*ValidateFlags, error) <span class="cov0" title="0">{
+        configPath, err := cmd.Flags().GetString("config")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get config flag: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">outputFormat, err := cmd.Flags().GetString("output")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get output flag: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">pipelineMode, err := cmd.Flags().GetBool("pipeline")
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to get pipeline flag: %w", err)
+        }</span>
+
+        // Guard clause: validate config path
+        <span class="cov0" title="0">if err := ValidateConfigPath(configPath); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid config path: %w", err)
+        }</span>
+
+        // Guard clause: validate output format
+        <span class="cov0" title="0">if err := ValidateOutputFormat(outputFormat); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid output format: %w", err)
+        }</span>
+
+        <span class="cov0" title="0">return &amp;ValidateFlags{
+                ConfigPath:   configPath,
+                OutputFormat: outputFormat,
+                PipelineMode: pipelineMode,
+        }, nil</span>
+}
+
+// executeValidation executes the validation process
+func executeValidation(flags *ValidateFlags) error <span class="cov0" title="0">{
+        // Guard clause: validate flags
+        if flags == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("flags cannot be nil")
+        }</span>
+
+        // Display validation info
+        <span class="cov0" title="0">displayValidationInfo(flags)
+
+        // TODO: Implement actual validation logic
+        fmt.Printf("✅ Validation completed successfully!\n")
+
+        // Handle pipeline output
+        if flags.PipelineMode </span><span class="cov0" title="0">{
+                displayPipelineOutput()
+        }</span>
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+// displayValidationInfo displays validation information
+func displayValidationInfo(flags *ValidateFlags) <span class="cov0" title="0">{
+        fmt.Printf("🔍 Validating configuration files...\n")
+        fmt.Printf("📁 Config: %s\n", flags.ConfigPath)
+        fmt.Printf("📤 Output: %s\n", flags.OutputFormat)
+        
+        if flags.PipelineMode </span><span class="cov0" title="0">{
+                fmt.Printf("🚀 Pipeline mode: enabled\n")
+        }</span>
+}
+
+// displayPipelineOutput displays pipeline-friendly output
+func displayPipelineOutput() <span class="cov0" title="0">{
+        fmt.Printf("PRAETORIAN_VALIDATION_STATUS=success\n")
+}</span>
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package cli
+
+import "fmt"
+
+// ValidateConfigPath validates the config path
+func ValidateConfigPath(path string) error <span class="cov0" title="0">{
+        if path == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("config path cannot be empty")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// ValidateOutputFormat validates the output format
+func ValidateOutputFormat(format string) error <span class="cov0" title="0">{
+        validFormats := []string{"text", "json", "yaml"}
+        for _, valid := range validFormats </span><span class="cov0" title="0">{
+                if format == valid </span><span class="cov0" title="0">{
+                        return nil
+                }</span>
+        }
+        <span class="cov0" title="0">return fmt.Errorf("invalid output format: %s, must be one of: %v", format, validFormats)</span>
+}
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package cli
+
+import (
+        "fmt"
+
+        "github.com/spf13/cobra"
+)
+
+// NewVersionCommand creates the version command
+func NewVersionCommand() *cobra.Command <span class="cov0" title="0">{
+        return &amp;cobra.Command{
+                Use:   "version",
+                Short: "Show version information",
+                Run:   runVersion,
+        }
+}</span>
+
+// runVersion executes the version command
+func runVersion(cmd *cobra.Command, args []string) <span class="cov0" title="0">{
+        displayVersionInfo()
+}</span>
+
+// displayVersionInfo displays version information
+func displayVersionInfo() <span class="cov0" title="0">{
+        fmt.Printf("Praetorian CLI v0.0.1-alpha\n")
+        fmt.Printf("Commit: dev\n")
+        fmt.Printf("Built: unknown\n")
+        fmt.Printf("Go version: 1.21+\n")
+}</span>
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package models
+
+import (
+        "time"
+)
+
+// PraetorianConfig represents the main configuration structure
+type PraetorianConfig struct {
+        Version      string                    `yaml:"version" json:"version"`
+        Files        FilePatterns              `yaml:"files" json:"files"`
+        Environments map[string]string         `yaml:"environments" json:"environments"`
+        Rules        ValidationRules           `yaml:"rules" json:"rules"`
+        Output       OutputConfig              `yaml:"output" json:"output"`
+        Performance  PerformanceConfig         `yaml:"performance" json:"performance"`
+        Integrations IntegrationConfig         `yaml:"integrations" json:"integrations"`
+}
+
+// FilePatterns defines file patterns and exclusions
+type FilePatterns struct {
+        Include []string `yaml:"include" json:"include"`
+        Exclude []string `yaml:"exclude" json:"exclude"`
+}
+
+// ValidationRules defines validation rules
+type ValidationRules struct {
+        Structure  StructureRules  `yaml:"structure" json:"structure"`
+        Security   SecurityRules   `yaml:"security" json:"security"`
+        Compliance ComplianceRules `yaml:"compliance" json:"compliance"`
+}
+
+// StructureRules defines structure validation rules
+type StructureRules struct {
+        RequiredKeys []string `yaml:"required_keys" json:"required_keys"`
+        ForbiddenKeys []string `yaml:"forbidden_keys" json:"forbidden_keys"`
+        IgnoreKeys   []string `yaml:"ignore_keys" json:"ignore_keys"`
+}
+
+// SecurityRules defines security validation rules
+type SecurityRules struct {
+        SecretDetection    bool     `yaml:"secret_detection" json:"secret_detection"`
+        VulnerabilityScan  bool     `yaml:"vulnerability_scan" json:"vulnerability_scan"`
+        PermissionCheck    bool     `yaml:"permission_check" json:"permission_check"`
+        CustomPatterns     []string `yaml:"custom_patterns" json:"custom_patterns"`
+}
+
+// ComplianceRules defines compliance validation rules
+type ComplianceRules struct {
+        Standards []string         `yaml:"standards" json:"standards"`
+        Policies  []string         `yaml:"policies" json:"policies"`
+        Custom    map[string]interface{} `yaml:"custom" json:"custom"`
+}
+
+// OutputConfig defines output configuration
+type OutputConfig struct {
+        Format       string `yaml:"format" json:"format"`
+        Colors       bool   `yaml:"colors" json:"colors"`
+        Verbose      bool   `yaml:"verbose" json:"verbose"`
+        PipelineMode bool   `yaml:"pipeline_mode" json:"pipeline_mode"`
+}
+
+// PerformanceConfig defines performance settings
+type PerformanceConfig struct {
+        Concurrent   bool          `yaml:"concurrent" json:"concurrent"`
+        MaxWorkers   int           `yaml:"max_workers" json:"max_workers"`
+        Timeout      time.Duration `yaml:"timeout" json:"timeout"`
+        MemoryLimit  string        `yaml:"memory_limit" json:"memory_limit"`
+}
+
+// IntegrationConfig defines integration settings
+type IntegrationConfig struct {
+        Notifications NotificationConfig `yaml:"notifications" json:"notifications"`
+        Storage       StorageConfig       `yaml:"storage" json:"storage"`
+}
+
+// NotificationConfig defines notification settings
+type NotificationConfig struct {
+        Slack string `yaml:"slack" json:"slack"`
+        Teams string `yaml:"teams" json:"teams"`
+        Email string `yaml:"email" json:"email"`
+}
+
+// StorageConfig defines storage settings
+type StorageConfig struct {
+        S3  string `yaml:"s3" json:"s3"`
+        GCS string `yaml:"gcs" json:"gcs"`
+}
+
+// DefaultConfig returns a default configuration
+func DefaultConfig() *PraetorianConfig <span class="cov0" title="0">{
+        return &amp;PraetorianConfig{
+                Version: "2.0",
+                Files: FilePatterns{
+                        Include: []string{"configs/*.yaml", "configs/*.json", "configs/*.toml"},
+                        Exclude: []string{"configs/*.local.*", "configs/*.test.*"},
+                },
+                Environments: map[string]string{
+                        "dev":     "configs/dev/*",
+                        "staging": "configs/staging/*",
+                        "prod":    "configs/prod/*",
+                },
+                Rules: ValidationRules{
+                        Structure: StructureRules{
+                                RequiredKeys:  []string{"database.host", "api.port"},
+                                ForbiddenKeys: []string{"debug", "test"},
+                                IgnoreKeys:    []string{"timestamp", "version"},
+                        },
+                        Security: SecurityRules{
+                                SecretDetection:   true,
+                                VulnerabilityScan: true,
+                                PermissionCheck:   true,
+                        },
+                        Compliance: ComplianceRules{
+                                Standards: []string{"PCI_DSS", "GDPR"},
+                                Policies:  []string{"data_encryption", "access_control"},
+                        },
+                },
+                Output: OutputConfig{
+                        Format:       "text",
+                        Colors:       true,
+                        Verbose:      false,
+                        PipelineMode: false,
+                },
+                Performance: PerformanceConfig{
+                        Concurrent:  true,
+                        MaxWorkers:  4,
+                        Timeout:     30 * time.Second,
+                        MemoryLimit: "100MB",
+                },
+                Integrations: IntegrationConfig{
+                        Notifications: NotificationConfig{},
+                        Storage:       StorageConfig{},
+                },
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package validation
+
+import (
+        "context"
+        "fmt"
+        "path/filepath"
+        "strings"
+        "sync"
+
+        "github.com/syntropysoft/praetorian-go/internal/domain/models"
+)
+
+// FilePipeline implements the Pipeline interface
+type FilePipeline struct {
+        readers    []models.FileReader
+        processors []models.FileProcessor
+        config     models.PipelineConfig
+}
+
+// NewFilePipeline creates a new file pipeline
+func NewFilePipeline(config models.PipelineConfig) *FilePipeline <span class="cov0" title="0">{
+        return &amp;FilePipeline{
+                readers:    make([]models.FileReader, 0),
+                processors: make([]models.FileProcessor, 0),
+                config:     config,
+        }
+}</span>
+
+// ProcessFiles processes multiple files concurrently
+func (p *FilePipeline) ProcessFiles(ctx context.Context, filenames []string) ([]*models.ConfigData, error) <span class="cov0" title="0">{
+        // Guard clause: validate input
+        if err := p.validateFilenames(filenames); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid filenames: %w", err)
+        }</span>
+
+        // Guard clause: check if we have processors
+        <span class="cov0" title="0">if len(p.processors) == 0 </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("no processors registered")
+        }</span>
+
+        // Process files concurrently
+        <span class="cov0" title="0">return p.processFilesConcurrently(ctx, filenames)</span>
+}
+
+// ProcessFile processes a single file
+func (p *FilePipeline) ProcessFile(ctx context.Context, filename string) (*models.ConfigData, error) <span class="cov0" title="0">{
+        // Guard clause: validate input
+        if err := p.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("invalid filename: %w", err)
+        }</span>
+
+        // Find appropriate processor
+        <span class="cov0" title="0">processor := p.findProcessor(filename)
+        if processor == nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("no processor found for file: %s", filename)
+        }</span>
+
+        // Read file content
+        <span class="cov0" title="0">content, err := p.readFileContent(filename)
+        if err != nil </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("failed to read file %s: %w", filename, err)
+        }</span>
+
+        // Process file
+        <span class="cov0" title="0">return processor.Process(ctx, filename, content)</span>
+}
+
+// RegisterProcessor registers a new processor
+func (p *FilePipeline) RegisterProcessor(processor models.FileProcessor) error <span class="cov0" title="0">{
+        // Guard clause: validate processor
+        if processor == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("processor cannot be nil")
+        }</span>
+
+        // Guard clause: check for duplicates
+        <span class="cov0" title="0">if p.isProcessorRegistered(processor) </span><span class="cov0" title="0">{
+                return fmt.Errorf("processor already registered")
+        }</span>
+
+        <span class="cov0" title="0">p.processors = append(p.processors, processor)
+        return nil</span>
+}
+
+// GetProcessors returns all registered processors
+func (p *FilePipeline) GetProcessors() []models.FileProcessor <span class="cov0" title="0">{
+        // Return a copy to prevent external modification
+        processors := make([]models.FileProcessor, len(p.processors))
+        copy(processors, p.processors)
+        return processors
+}</span>
+
+// processFilesConcurrently processes files using worker pool pattern
+func (p *FilePipeline) processFilesConcurrently(ctx context.Context, filenames []string) ([]*models.ConfigData, error) <span class="cov0" title="0">{
+        // Create channels for work distribution
+        jobs := make(chan string, len(filenames))
+        results := make(chan *fileProcessingResult, len(filenames))
+        errors := make(chan error, len(filenames))
+
+        // Start workers
+        var wg sync.WaitGroup
+        workerCount := p.getWorkerCount()
+
+        for i := 0; i &lt; workerCount; i++ </span><span class="cov0" title="0">{
+                wg.Add(1)
+                go p.worker(ctx, &amp;wg, jobs, results, errors)
+        }</span>
+
+        // Send jobs
+        <span class="cov0" title="0">for _, filename := range filenames </span><span class="cov0" title="0">{
+                jobs &lt;- filename
+        }</span>
+        <span class="cov0" title="0">close(jobs)
+
+        // Wait for workers to complete
+        go func() </span><span class="cov0" title="0">{
+                wg.Wait()
+                close(results)
+                close(errors)
+        }</span>()
+
+        // Collect results
+        <span class="cov0" title="0">return p.collectResults(results, errors)</span>
+}
+
+// worker processes files from the jobs channel
+func (p *FilePipeline) worker(ctx context.Context, wg *sync.WaitGroup, jobs &lt;-chan string, results chan&lt;- *fileProcessingResult, errors chan&lt;- error) <span class="cov0" title="0">{
+        defer wg.Done()
+
+        for filename := range jobs </span><span class="cov0" title="0">{
+                select </span>{
+                case &lt;-ctx.Done():<span class="cov0" title="0">
+                        errors &lt;- ctx.Err()
+                        return</span>
+                default:<span class="cov0" title="0">
+                        result := p.processFileWithResult(ctx, filename)
+                        if result.Error != nil </span><span class="cov0" title="0">{
+                                errors &lt;- result.Error
+                        }</span> else<span class="cov0" title="0"> {
+                                results &lt;- result
+                        }</span>
+                }
+        }
+}
+
+// processFileWithResult processes a file and returns a result
+func (p *FilePipeline) processFileWithResult(ctx context.Context, filename string) *fileProcessingResult <span class="cov0" title="0">{
+        configData, err := p.ProcessFile(ctx, filename)
+        return &amp;fileProcessingResult{
+                Filename: filename,
+                Data:     configData,
+                Error:    err,
+        }
+}</span>
+
+// collectResults collects results from workers
+func (p *FilePipeline) collectResults(results &lt;-chan *fileProcessingResult, errors &lt;-chan error) ([]*models.ConfigData, error) <span class="cov0" title="0">{
+        var processed []*models.ConfigData
+        var processingErrors []error
+
+        // Collect successful results
+        for result := range results </span><span class="cov0" title="0">{
+                if result.Data != nil </span><span class="cov0" title="0">{
+                        processed = append(processed, result.Data)
+                }</span>
+        }
+
+        // Collect errors
+        <span class="cov0" title="0">for err := range errors </span><span class="cov0" title="0">{
+                processingErrors = append(processingErrors, err)
+        }</span>
+
+        // Return error if any processing failed
+        <span class="cov0" title="0">if len(processingErrors) &gt; 0 </span><span class="cov0" title="0">{
+                return processed, fmt.Errorf("processing errors: %v", processingErrors)
+        }</span>
+
+        <span class="cov0" title="0">return processed, nil</span>
+}
+
+// findProcessor finds the appropriate processor for a filename
+func (p *FilePipeline) findProcessor(filename string) models.FileProcessor <span class="cov0" title="0">{
+        // Guard clause: no processors registered
+        if len(p.processors) == 0 </span><span class="cov0" title="0">{
+                return nil
+        }</span>
+
+        // Find processor that can handle this file
+        <span class="cov0" title="0">for _, processor := range p.processors </span><span class="cov0" title="0">{
+                if processor.CanProcess(filename) </span><span class="cov0" title="0">{
+                        return processor
+                }</span>
+        }
+
+        <span class="cov0" title="0">return nil</span>
+}
+
+// readFileContent reads file content using registered readers
+func (p *FilePipeline) readFileContent(filename string) ([]byte, error) <span class="cov0" title="0">{
+        // Guard clause: no readers registered
+        if len(p.readers) == 0 </span><span class="cov0" title="0">{
+                return nil, fmt.Errorf("no file readers registered")
+        }</span>
+
+        // Try each reader until one succeeds
+        <span class="cov0" title="0">for _, reader := range p.readers </span><span class="cov0" title="0">{
+                if reader.FileExists(filename) </span><span class="cov0" title="0">{
+                        return reader.ReadFile(filename)
+                }</span>
+        }
+
+        <span class="cov0" title="0">return nil, fmt.Errorf("file not found: %s", filename)</span>
+}
+
+// validateFilenames validates a list of filenames
+func (p *FilePipeline) validateFilenames(filenames []string) error <span class="cov0" title="0">{
+        if filenames == nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("filenames cannot be nil")
+        }</span>
+        <span class="cov0" title="0">if len(filenames) == 0 </span><span class="cov0" title="0">{
+                return fmt.Errorf("filenames cannot be empty")
+        }</span>
+        
+        <span class="cov0" title="0">for _, filename := range filenames </span><span class="cov0" title="0">{
+                if err := p.validateFilename(filename); err != nil </span><span class="cov0" title="0">{
+                        return fmt.Errorf("invalid filename %s: %w", filename, err)
+                }</span>
+        }
+        
+        <span class="cov0" title="0">return nil</span>
+}
+
+// validateFilename validates a single filename
+func (p *FilePipeline) validateFilename(filename string) error <span class="cov0" title="0">{
+        if filename == "" </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename cannot be empty")
+        }</span>
+        <span class="cov0" title="0">if !filepath.IsAbs(filename) &amp;&amp; !strings.HasPrefix(filename, "./") </span><span class="cov0" title="0">{
+                return fmt.Errorf("filename must be absolute path or start with ./")
+        }</span>
+        <span class="cov0" title="0">return nil</span>
+}
+
+// isProcessorRegistered checks if a processor is already registered
+func (p *FilePipeline) isProcessorRegistered(newProcessor models.FileProcessor) bool <span class="cov0" title="0">{
+        newExtensions := newProcessor.GetSupportedExtensions()
+        
+        for _, existing := range p.processors </span><span class="cov0" title="0">{
+                existingExtensions := existing.GetSupportedExtensions()
+                if p.hasExtensionOverlap(newExtensions, existingExtensions) </span><span class="cov0" title="0">{
+                        return true
+                }</span>
+        }
+        
+        <span class="cov0" title="0">return false</span>
+}
+
+// hasExtensionOverlap checks if two extension lists overlap
+func (p *FilePipeline) hasExtensionOverlap(ext1, ext2 []string) bool <span class="cov0" title="0">{
+        for _, e1 := range ext1 </span><span class="cov0" title="0">{
+                for _, e2 := range ext2 </span><span class="cov0" title="0">{
+                        if e1 == e2 </span><span class="cov0" title="0">{
+                                return true
+                        }</span>
+                }
+        }
+        <span class="cov0" title="0">return false</span>
+}
+
+// getWorkerCount returns the number of workers to use
+func (p *FilePipeline) getWorkerCount() int <span class="cov0" title="0">{
+        if p.config.MaxWorkers &gt; 0 </span><span class="cov0" title="0">{
+                return p.config.MaxWorkers
+        }</span>
+        <span class="cov0" title="0">return 4</span> // Default worker count
+}
+
+// fileProcessingResult represents the result of processing a single file
+type fileProcessingResult struct {
+        Filename string
+        Data     *models.ConfigData
+        Error    error
+}
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package tests
+
+import (
+        "fmt"
+        "os"
+        "path/filepath"
+        "strings"
+        "testing"
+)
+
+// TestHelper provides common testing utilities
+type TestHelper struct {
+        TempDir string
+}
+
+// NewTestHelper creates a new test helper
+func NewTestHelper(t *testing.T) *TestHelper <span class="cov0" title="0">{
+        tempDir := t.TempDir()
+        return &amp;TestHelper{TempDir: tempDir}
+}</span>
+
+// CreateTestFile creates a test file with content
+func (h *TestHelper) CreateTestFile(filename, content string) error <span class="cov0" title="0">{
+        fullPath := filepath.Join(h.TempDir, filename)
+        dir := filepath.Dir(fullPath)
+        
+        if err := os.MkdirAll(dir, 0755); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to create directory: %w", err)
+        }</span>
+        
+        <span class="cov0" title="0">if err := os.WriteFile(fullPath, []byte(content), 0644); err != nil </span><span class="cov0" title="0">{
+                return fmt.Errorf("failed to write file: %w", err)
+        }</span>
+        
+        <span class="cov0" title="0">return nil</span>
+}
+
+// GetTestFilePath returns the full path for a test file
+func (h *TestHelper) GetTestFilePath(filename string) string <span class="cov0" title="0">{
+        return filepath.Join(h.TempDir, filename)
+}</span>
+
+// FileExists checks if a test file exists
+func (h *TestHelper) FileExists(filename string) bool <span class="cov0" title="0">{
+        fullPath := h.GetTestFilePath(filename)
+        _, err := os.Stat(fullPath)
+        return !os.IsNotExist(err)
+}</span>
+
+// ReadTestFile reads content from a test file
+func (h *TestHelper) ReadTestFile(filename string) (string, error) <span class="cov0" title="0">{
+        fullPath := h.GetTestFilePath(filename)
+        content, err := os.ReadFile(fullPath)
+        if err != nil </span><span class="cov0" title="0">{
+                return "", fmt.Errorf("failed to read file: %w", err)
+        }</span>
+        <span class="cov0" title="0">return string(content), nil</span>
+}
+
+// AssertFileContains asserts that a test file contains specific content
+func (h *TestHelper) AssertFileContains(t *testing.T, filename, expectedContent string) <span class="cov0" title="0">{
+        t.Helper()
+        
+        content, err := h.ReadTestFile(filename)
+        if err != nil </span><span class="cov0" title="0">{
+                t.Fatalf("Failed to read file %s: %v", filename, err)
+        }</span>
+        
+        <span class="cov0" title="0">if !strings.Contains(content, expectedContent) </span><span class="cov0" title="0">{
+                t.Errorf("File %s does not contain expected content '%s'", filename, expectedContent)
+        }</span>
+}
+
+// AssertFileExists asserts that a test file exists
+func (h *TestHelper) AssertFileExists(t *testing.T, filename string) <span class="cov0" title="0">{
+        t.Helper()
+        
+        if !h.FileExists(filename) </span><span class="cov0" title="0">{
+                t.Errorf("Expected file %s to exist", filename)
+        }</span>
+}
+
+// AssertFileNotExists asserts that a test file does not exist
+func (h *TestHelper) AssertFileNotExists(t *testing.T, filename string) <span class="cov0" title="0">{
+        t.Helper()
+        
+        if h.FileExists(filename) </span><span class="cov0" title="0">{
+                t.Errorf("Expected file %s to not exist", filename)
+        }</span>
+}
+
+// Cleanup removes all test files
+func (h *TestHelper) Cleanup() error <span class="cov0" title="0">{
+        return os.RemoveAll(h.TempDir)
+}</span>
+
+// Common test content generators
+func (h *TestHelper) GenerateYAMLConfig() string <span class="cov0" title="0">{
+        return `version: "1.0"
+app:
+  name: "test-app"
+  version: "1.0.0"
+database:
+  host: "localhost"
+  port: 5432
+`
+}</span>
+
+func (h *TestHelper) GenerateJSONConfig() string <span class="cov0" title="0">{
+        return `{
+  "version": "1.0",
+  "app": {
+    "name": "test-app",
+    "version": "1.0.0"
+  },
+  "database": {
+    "host": "localhost",
+    "port": 5432
+  }
+}`
+}</span>
+
+func (h *TestHelper) GeneratePropertiesConfig() string <span class="cov0" title="0">{
+        return `app.name=test-app
+app.version=1.0.0
+database.host=localhost
+database.port=5432
+`
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

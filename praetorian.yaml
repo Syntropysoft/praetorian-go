@@ -1,0 +1,17 @@
+# Praetorian Configuration
+version: "1.0"
+files:
+  - "config/*.yaml"
+  - "config/*.json"
+  - "config/*.toml"
+
+environments:
+  dev: "config/dev"
+  staging: "config/staging"
+  prod: "config/prod"
+
+# DevSecOps specific configurations
+security:
+  secret_detection: true
+  vulnerability_scan: true
+  permission_check: true

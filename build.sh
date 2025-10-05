@@ -35,4 +35,4 @@ echo "📊 Binary sizes:"
 for file in dist/*; do
     size=$(du -h "$file" | cut -f1)
     echo "  $(basename "$file"): $size"
-done
+done 

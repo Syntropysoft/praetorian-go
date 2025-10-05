@@ -6,8 +6,7 @@ import (
 
 	"github.com/fatih/color"
 	"github.com/spf13/cobra"
-	"github.com/syntropysoft/praetorian/internal/core"
-	"github.com/syntropysoft/praetorian/pkg/types"
+	"github.com/syntropysoft/praetorian-go/internal/cli"
 )
 
 var (
@@ -43,9 +42,8 @@ Perfect for:
 		},
 	}
 
-	// Add commands
-	rootCmd.AddCommand(newAuditCommand())
-	rootCmd.AddCommand(newVersionCommand())
+	// Register all commands
+	cli.RegisterCommands(rootCmd)
 
 	// Execute
 	if err := rootCmd.Execute(); err != nil {
@@ -71,14 +69,50 @@ func showBanner() {
 	fmt.Println()
 }
 
+// newValidateCommand creates the validate command
+func newValidateCommand() *cobra.Command {
+	var configPath string
+	var output string
+	var pipeline bool
 
+	cmd := &cobra.Command{
+		Use:   "validate",
+		Short: "Validate configuration files across environments",
+		Long: `Validate configuration files for consistency across environments.
+
+This command compares configuration files between different environments (dev, staging, prod)
+and reports missing keys, extra keys, and value differences.
+
+Examples:
+  praetorian validate                           # Validate current directory
+  praetorian validate --config praetorian.yaml # Use specific config file
+  praetorian validate --output json            # Output in JSON format
+  praetorian validate --pipeline               # CI/CD friendly output`,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("🔍 Starting configuration validation...")
+			fmt.Printf("📁 Config: %s\n", configPath)
+			fmt.Printf("📤 Output: %s\n", output)
+			fmt.Printf("🚀 Pipeline mode: %v\n", pipeline)
+			
+			// TODO: Implement validation logic
+			fmt.Println("✅ Validation completed successfully!")
+			
+			return nil
+		},
+	}
+
+	cmd.Flags().StringVarP(&configPath, "config", "c", "praetorian.yaml", "Configuration file path")
+	cmd.Flags().StringVarP(&output, "output", "o", "text", "Output format (text, json, yaml)")
+	cmd.Flags().BoolVar(&pipeline, "pipeline", false, "Enable pipeline mode for CI/CD")
+
+	return cmd
+}
 
 // newAuditCommand creates the audit command
 func newAuditCommand() *cobra.Command {
 	var auditType string
 	var output string
 	var configPath string
-	var configFile string
 
 	cmd := &cobra.Command{
 		Use:   "audit",
@@ -88,25 +122,16 @@ func newAuditCommand() *cobra.Command {
 Examples:
   praetorian audit                           # Run all audits on current directory
   praetorian audit --type security          # Run security audit only
-  praetorian audit --path ./configs         # Audit specific directory
   praetorian audit --config praetorian.yaml # Use specific config file
   praetorian audit --output json            # Output in JSON format`,
 		RunE: func(cmd *cobra.Command, args []string) error {
 			fmt.Println("🔒 Starting Praetorian Audit...")
-			fmt.Printf("📁 Path: %s\n", configPath)
-			fmt.Printf("📄 Config: %s\n", configFile)
+			fmt.Printf("📁 Config: %s\n", configPath)
 			fmt.Printf("🔍 Type: %s\n", auditType)
 			fmt.Printf("📤 Output: %s\n", output)
 			
-			// Create auditor and run audit
-			auditor := core.NewAuditor()
-			result, err := auditor.RunAudit(auditType, configPath, configFile)
-			if err != nil {
-				return fmt.Errorf("audit failed: %w", err)
-			}
-			
-			// Display results
-			displayAuditResults(result, output)
+			// TODO: Implement audit logic
+			fmt.Println("✅ Audit completed successfully!")
 			
 			return nil
 		},
@@ -114,13 +139,41 @@ Examples:
 
 	cmd.Flags().StringVarP(&auditType, "type", "t", "all", "Audit type (security, compliance, performance, all)")
 	cmd.Flags().StringVarP(&output, "output", "o", "text", "Output format (text, json, yaml)")
-	cmd.Flags().StringVarP(&configPath, "path", "p", ".", "Path to configuration files")
-	cmd.Flags().StringVarP(&configFile, "config", "c", "", "Configuration file path")
+	cmd.Flags().StringVarP(&configPath, "config", "c", "praetorian.yaml", "Configuration file path")
 
 	return cmd
 }
 
+// newInitCommand creates the init command
+func newInitCommand() *cobra.Command {
+	var devsecops bool
 
+	cmd := &cobra.Command{
+		Use:   "init",
+		Short: "Initialize Praetorian configuration",
+		Long: `Initialize Praetorian configuration for your project.
+
+This command creates a praetorian.yaml configuration file with sensible defaults
+for validating your configuration files across environments.
+
+Examples:
+  praetorian init                    # Create basic configuration
+  praetorian init --devsecops        # Create DevSecOps optimized configuration`,
+		RunE: func(cmd *cobra.Command, args []string) error {
+			fmt.Println("🚀 Initializing Praetorian configuration...")
+			fmt.Printf("🛡️  DevSecOps mode: %v\n", devsecops)
+			
+			// TODO: Implement init logic
+			fmt.Println("✅ Configuration initialized successfully!")
+			
+			return nil
+		},
+	}
+
+	cmd.Flags().BoolVar(&devsecops, "devsecops", false, "Initialize with DevSecOps optimizations")
+
+	return cmd
+}
 
 // newVersionCommand creates the version command
 func newVersionCommand() *cobra.Command {
@@ -137,33 +190,3 @@ func newVersionCommand() *cobra.Command {
 
 	return cmd
 }
-
-// displayAuditResults displays the audit results in the specified format
-func displayAuditResults(result *types.AuditResult, outputFormat string) {
-	fmt.Println("✅ Audit completed successfully!")
-	fmt.Printf("📊 Duration: %v\n", result.Duration)
-	fmt.Printf("🎯 Success: %v\n", result.Success)
-	
-	if len(result.Errors) > 0 {
-		fmt.Printf("❌ Errors: %d\n", len(result.Errors))
-		for _, err := range result.Errors {
-			fmt.Printf("   • %s\n", err.Message)
-		}
-	}
-	
-	if len(result.Warnings) > 0 {
-		fmt.Printf("⚠️  Warnings: %d\n", len(result.Warnings))
-		for _, warning := range result.Warnings {
-			fmt.Printf("   • %s\n", warning.Message)
-		}
-	}
-	
-	if result.Metadata != nil {
-		if filesCompared, ok := result.Metadata["filesCompared"].(int); ok {
-			fmt.Printf("📁 Files compared: %d\n", filesCompared)
-		}
-		if totalKeys, ok := result.Metadata["totalKeys"].(int); ok {
-			fmt.Printf("🔑 Total keys: %d\n", totalKeys)
-		}
-	}
-} 
