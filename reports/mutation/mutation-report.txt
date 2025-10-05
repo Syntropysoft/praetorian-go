@@ -1,0 +1,2301 @@
+Enable mutator "branch/case"
+Enable mutator "branch/else"
+Enable mutator "branch/if"
+Enable mutator "expression/comparison"
+Enable mutator "expression/remove"
+Enable mutator "statement/remove"
+Save mutations into "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798"
+Mutate "internal/adapters/parsers/common.go"
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.0	2025-10-05 14:56:19.385179604 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -110,7 +110,7 @@
+ 	for _, value := range data {
+ 		switch v := value.(type) {
+ 		case map[string]interface{}:
+-			return true
++
+ 		case []interface{}:
+ 			if len(v) > 0 {
+ 				return true
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.0" with checksum 924a78d210ba3c64cecbb12ceef77a11
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.1	2025-10-05 14:56:19.785664145 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -112,9 +112,8 @@
+ 		case map[string]interface{}:
+ 			return true
+ 		case []interface{}:
+-			if len(v) > 0 {
+-				return true
+-			}
++			_ = v
++
+ 		}
+ 	}
+ 
+@@ -127,22 +126,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +224,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.1" with checksum 2864f97807ed4c6f9b6e3f7dd2047e4e
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.2	2025-10-05 14:56:20.115983201 -0300
+@@ -14,7 +14,7 @@
+ func ValidateFilenameAndExtension(filename string, supportedExtensions []string) bool {
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+-		return false
++
+ 	}
+ 
+ 	ext := GetFileExtension(filename)
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.2" with checksum 392cf8d2cf75dfd78b974f1b75a35772
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.3	2025-10-05 14:56:20.452985798 -0300
+@@ -25,19 +25,19 @@
+ func ValidateContextAndInput(ctx context.Context, filename string, content []byte) error {
+ 	// Guard clause: context cancelled
+ 	if ctx.Err() != nil {
+-		return fmt.Errorf("context cancelled: %w", ctx.Err())
++		_, _ = fmt.Errorf, ctx.Err
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.3" with checksum a53a13bc7a34c6e5562612182fe4706d
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.4	2025-10-05 14:56:20.813783425 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+-		return fmt.Errorf("filename cannot be empty")
++		_ = fmt.Errorf
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.4" with checksum c6fd9362ce9d9d98c8d448aadaf26edc
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.5	2025-10-05 14:56:21.137781394 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+-		return fmt.Errorf("content cannot be nil")
++		_ = fmt.Errorf
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.5" with checksum caaf7e2229e3ee472beb123e338206ea
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.6	2025-10-05 14:56:21.497920779 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -51,7 +51,7 @@
+ func supportsExtension(extension string, supportedExtensions []string) bool {
+ 	for _, ext := range supportedExtensions {
+ 		if ext == extension {
+-			return true
++
+ 		}
+ 	}
+ 	return false
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.6" with checksum 92982d0e94fefe7c8e8f7c59f4e9e98f
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.7	2025-10-05 14:56:21.848990737 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -86,8 +86,7 @@
+ 
+ 	// Add file-specific metadata only if filename is provided
+ 	if filename != "" {
+-		metadata["basename"] = filepath.Base(filename)
+-		metadata["dirname"] = filepath.Dir(filename)
++		_, _, _, _, _, _ = metadata, filepath.Base, filename, metadata, filepath.Dir, filename
+ 	}
+ 
+ 	return metadata
+@@ -127,22 +126,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +224,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.7" with checksum aee9282936711179add8714eccac6577
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.8	2025-10-05 14:56:22.165956129 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -96,7 +96,7 @@
+ // countKeys counts the number of top-level keys
+ func countKeys(data map[string]interface{}) int {
+ 	if data == nil {
+-		return 0
++
+ 	}
+ 	return len(data)
+ }
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.8" with checksum 2dc1063548f6ffdb54fb45095b4eb11e
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.9	2025-10-05 14:56:22.497311295 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -104,7 +104,7 @@
+ // hasNestedData checks if the data contains nested structures
+ func hasNestedData(data map[string]interface{}) bool {
+ 	if data == nil {
+-		return false
++
+ 	}
+ 
+ 	for _, value := range data {
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.9" with checksum a4b78b9bec3aacf8141169035fce4608
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.10	2025-10-05 14:56:22.864724837 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -113,7 +113,7 @@
+ 			return true
+ 		case []interface{}:
+ 			if len(v) > 0 {
+-				return true
++
+ 			}
+ 		}
+ 	}
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.10" with checksum eb12fe381610f7438cd095263851277f
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.11	2025-10-05 14:56:23.206120126 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -125,24 +125,25 @@
+ func removeQuotes(value string) string {
+ 	// Guard clause: empty value
+ 	if value == "" {
+-		return value
++		_ = value
++
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +226,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.11" with checksum 0073c8f5113549d5ef26a5b741633cbd
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.12	2025-10-05 14:56:23.542098108 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,23 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+-		return value
++		_ = value
++
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +226,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.12" with checksum d01c07019bf7b06591c5610090fe3c9e
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.13	2025-10-05 14:56:23.883328231 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,23 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+-		return value[1 : len(value)-1]
++		_, _ = value, value
++
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +226,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.13" with checksum f5f9e9acdc9a4ef19fcd8b051bb89533
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.14	2025-10-05 14:56:24.226019587 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,23 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+-		return value[1 : len(value)-1]
++		_, _ = value, value
++
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +226,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.14" with checksum 83f7b2bec4794ff33d56eaf7ac62c2f2
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.15	2025-10-05 14:56:24.539024902 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -192,7 +192,7 @@
+ func parseKeyValueContent(content []byte, isComment func(string) bool) (map[string]interface{}, error) {
+ 	// Guard clause: empty content
+ 	if isEmptyContent(content) {
+-		return createEmptyResult(), nil
++
+ 	}
+ 
+ 	result := createEmptyResult()
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.15" with checksum 31fd2c1537b6d701d2daaddcf6c33001
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.16	2025-10-05 14:56:24.918557497 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -203,7 +203,7 @@
+ 
+ 		// Skip empty lines and comments
+ 		if isEmptyLine(trimmedLine) || isComment(trimmedLine) {
+-			continue
++
+ 		}
+ 
+ 		// Parse key-value pair
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.16" with checksum 4a9ce1c46a452fab33feb14dc69b1923
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.17	2025-10-05 14:56:25.420225957 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -208,7 +208,8 @@
+ 
+ 		// Parse key-value pair
+ 		if key, value, ok := parseKeyValue(trimmedLine); ok {
+-			result[key] = removeQuotes(value)
++			_, _, _ = result, key, value
++
+ 		}
+ 	}
+ 
+@@ -225,4 +226,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.17" with checksum 9a0e399b187b355b164db9d5fa837633
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.18	2025-10-05 14:56:25.770445799 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -219,10 +219,9 @@
+ func parseKeyValue(line string) (string, string, bool) {
+ 	separatorIndex := findKeyValueSeparator(line)
+ 	if separatorIndex == -1 {
+-		return "", "", false
++
+ 	}
+ 
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.18" with checksum ce8236d1a50caabc3ea53e65e1b8a34e
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.19	2025-10-05 14:56:26.109987485 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -112,7 +112,7 @@
+ 		case map[string]interface{}:
+ 			return true
+ 		case []interface{}:
+-			if len(v) > 0 {
++			if len(v) >= 0 {
+ 				return true
+ 			}
+ 		}
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.19" with checksum 8ea31303a608985e57da1e7aed3d62e6
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.20	2025-10-05 14:56:26.482153715 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+-	if len(value) < 2 {
++	if len(value) <= 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.20" with checksum c42cf43556986c31d61e1b6a0b9136b2
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.21	2025-10-05 14:56:26.823263964 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+-	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
++	if true && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.21" with checksum 48726518752fd34fbba0370043eae058
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.22	2025-10-05 14:56:27.166888431 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+-	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
++	if strings.HasPrefix(value, "\"") && true {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.22" with checksum 9ab2dd4cd7cb72b4464c252b056060ef
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.23	2025-10-05 14:56:27.525566290 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+-	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
++	if true && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.23" with checksum 1e61bd930411c00e5d4d669bc6764811
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.24	2025-10-05 14:56:27.875366470 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+-	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
++	if strings.HasPrefix(value, "'") && true {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.24" with checksum fe81e7774ba4618af535f259d3115b62
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.25	2025-10-05 14:56:28.218484068 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return false || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.25" with checksum 14474ee70eb804b20111d07fd9c99159
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.26	2025-10-05 14:56:28.561221380 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || false
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.26" with checksum d16c852b26a6715460772e759139c1d8
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.27	2025-10-05 14:56:28.895243135 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return false || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.27" with checksum 83859372216bc4c05a08d02a32c54381
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.28	2025-10-05 14:56:29.253134629 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return line == "" || strings.HasPrefix(line, "#") || false || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.28" with checksum 7fb3f7a36f92aa87c4968c7713ce8763
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.29	2025-10-05 14:56:29.611967277 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return false || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.29" with checksum 1d8f23913954b1e360f278a2cd8e68a4
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.30	2025-10-05 14:56:29.942460118 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return line == "" || false || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.30" with checksum 4facd04adbae8a8521e2171aacf70b01
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.31	2025-10-05 14:56:30.280824567 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -202,7 +202,7 @@
+ 		trimmedLine := trimLine(line)
+ 
+ 		// Skip empty lines and comments
+-		if isEmptyLine(trimmedLine) || isComment(trimmedLine) {
++		if false || isComment(trimmedLine) {
+ 			continue
+ 		}
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.31" with checksum c979c0b103c31b4e886646d9fc2e04ca
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.32	2025-10-05 14:56:30.621980939 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -202,7 +202,7 @@
+ 		trimmedLine := trimLine(line)
+ 
+ 		// Skip empty lines and comments
+-		if isEmptyLine(trimmedLine) || isComment(trimmedLine) {
++		if isEmptyLine(trimmedLine) || false {
+ 			continue
+ 		}
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.32" with checksum bb0cbb9b4727632ca4617b5ab02a59a0
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.33	2025-10-05 14:56:30.971232875 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -60,7 +60,8 @@
+ // copyExtensions returns a copy of extensions slice
+ func copyExtensions(extensions []string) []string {
+ 	result := make([]string, len(extensions))
+-	copy(result, extensions)
++	_, _ = result, extensions
++
+ 	return result
+ }
+ 
+@@ -127,22 +128,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +226,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.33" with checksum be35df76213458817794e43235adb1f6
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.34	2025-10-05 14:56:31.311815297 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -86,7 +86,7 @@
+ 
+ 	// Add file-specific metadata only if filename is provided
+ 	if filename != "" {
+-		metadata["basename"] = filepath.Base(filename)
++		_, _, _ = metadata, filepath.Base, filename
+ 		metadata["dirname"] = filepath.Dir(filename)
+ 	}
+ 
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.34" with checksum 7e7799f1573dc5499fe670fb8a667c9a
+--- internal/adapters/parsers/common.go	2025-10-05 14:51:23.568072278 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.35	2025-10-05 14:56:31.652137721 -0300
+@@ -27,17 +27,17 @@
+ 	if ctx.Err() != nil {
+ 		return fmt.Errorf("context cancelled: %w", ctx.Err())
+ 	}
+-	
++
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+ 		return fmt.Errorf("filename cannot be empty")
+ 	}
+-	
++
+ 	// Guard clause: nil content
+ 	if content == nil {
+ 		return fmt.Errorf("content cannot be nil")
+ 	}
+-	
++
+ 	return nil
+ }
+ 
+@@ -87,7 +87,7 @@
+ 	// Add file-specific metadata only if filename is provided
+ 	if filename != "" {
+ 		metadata["basename"] = filepath.Base(filename)
+-		metadata["dirname"] = filepath.Dir(filename)
++		_, _, _ = metadata, filepath.Dir, filename
+ 	}
+ 
+ 	return metadata
+@@ -127,22 +127,22 @@
+ 	if value == "" {
+ 		return value
+ 	}
+-	
++
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+ 		return value
+ 	}
+-	
++
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+-	
++
+ 	return value
+ }
+ 
+@@ -225,4 +225,3 @@
+ 	key, value := extractKeyValue(line, separatorIndex)
+ 	return key, value, isValidKey(key)
+ }
+-
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-3631411798/internal/adapters/parsers/common.go.35" with checksum f4fcc8005780f6c053201a02a69c156b
+The mutation score is 0.000000 (0 passed, 36 failed, 1 duplicated, 0 skipped, total is 36)
