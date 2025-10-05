@@ -108,8 +108,17 @@
 			<div id="legend">
 				<span>not tracked</span>
 			
-				<span class="cov0">not covered</span>
-				<span class="cov8">covered</span>
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
 			
 			</div>
 		</div>
@@ -624,54 +633,54 @@ import (
 )
 
 // ValidateFilenameAndExtension validates filename and checks extension
-func ValidateFilenameAndExtension(filename string, supportedExtensions []string) bool <span class="cov8" title="1">{
+func ValidateFilenameAndExtension(filename string, supportedExtensions []string) bool <span class="cov5" title="6">{
         // Guard clause: empty filename
-        if filename == "" </span><span class="cov8" title="1">{
+        if filename == "" </span><span class="cov1" title="1">{
                 return false
         }</span>
 
-        <span class="cov8" title="1">ext := GetFileExtension(filename)
+        <span class="cov4" title="5">ext := GetFileExtension(filename)
         return supportsExtension(ext, supportedExtensions)</span>
 }
 
 // ValidateContextAndInput validates context and input parameters
-func ValidateContextAndInput(ctx context.Context, filename string, content []byte) error <span class="cov8" title="1">{
+func ValidateContextAndInput(ctx context.Context, filename string, content []byte) error <span class="cov4" title="4">{
         // Guard clause: context cancelled
         if ctx.Err() != nil </span><span class="cov0" title="0">{
                 return fmt.Errorf("context cancelled: %w", ctx.Err())
         }</span>
 
         // Guard clause: empty filename
-        <span class="cov8" title="1">if filename == "" </span><span class="cov8" title="1">{
+        <span class="cov4" title="4">if filename == "" </span><span class="cov1" title="1">{
                 return fmt.Errorf("filename cannot be empty")
         }</span>
 
         // Guard clause: nil content
-        <span class="cov8" title="1">if content == nil </span><span class="cov8" title="1">{
+        <span class="cov3" title="3">if content == nil </span><span class="cov1" title="1">{
                 return fmt.Errorf("content cannot be nil")
         }</span>
 
-        <span class="cov8" title="1">return nil</span>
+        <span class="cov2" title="2">return nil</span>
 }
 
 // GetFileExtension extracts extension from filename
-func GetFileExtension(filename string) string <span class="cov8" title="1">{
+func GetFileExtension(filename string) string <span class="cov6" title="11">{
         ext := filepath.Ext(filename)
         return strings.TrimPrefix(strings.ToLower(ext), ".")
 }</span>
 
 // supportsExtension checks if extension is supported
-func supportsExtension(extension string, supportedExtensions []string) bool <span class="cov8" title="1">{
-        for _, ext := range supportedExtensions </span><span class="cov8" title="1">{
-                if ext == extension </span><span class="cov8" title="1">{
+func supportsExtension(extension string, supportedExtensions []string) bool <span class="cov4" title="5">{
+        for _, ext := range supportedExtensions </span><span class="cov4" title="5">{
+                if ext == extension </span><span class="cov4" title="4">{
                         return true
                 }</span>
         }
-        <span class="cov8" title="1">return false</span>
+        <span class="cov1" title="1">return false</span>
 }
 
 // copyExtensions returns a copy of extensions slice
-func copyExtensions(extensions []string) []string <span class="cov8" title="1">{
+func copyExtensions(extensions []string) []string <span class="cov10" title="54">{
         result := make([]string, len(extensions))
         copy(result, extensions)
         return result
@@ -856,7 +865,7 @@ type ENVProcessor struct {
 }
 
 // NewENVProcessor creates a new ENV processor
-func NewENVProcessor() *ENVProcessor <span class="cov8" title="1">{
+func NewENVProcessor() *ENVProcessor <span class="cov5" title="2">{
         return &amp;ENVProcessor{
                 supportedExtensions: []string{"env"},
         }
@@ -882,7 +891,7 @@ func (p *ENVProcessor) Process(ctx context.Context, filename string, content []b
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *ENVProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *ENVProcessor) GetSupportedExtensions() []string <span class="cov10" title="4">{
         return copyExtensions(p.supportedExtensions)
 }</span>
 
@@ -918,7 +927,7 @@ type HCLProcessor struct {
 }
 
 // NewHCLProcessor creates a new HCL processor
-func NewHCLProcessor() *HCLProcessor <span class="cov8" title="1">{
+func NewHCLProcessor() *HCLProcessor <span class="cov4" title="2">{
         return &amp;HCLProcessor{
                 supportedExtensions: []string{"hcl"},
         }
@@ -944,7 +953,7 @@ func (p *HCLProcessor) Process(ctx context.Context, filename string, content []b
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *HCLProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *HCLProcessor) GetSupportedExtensions() []string <span class="cov10" title="8">{
         return copyExtensions(p.supportedExtensions)
 }</span>
 
@@ -981,7 +990,7 @@ type INIProcessor struct {
 }
 
 // NewINIProcessor creates a new INI processor
-func NewINIProcessor() *INIProcessor <span class="cov8" title="1">{
+func NewINIProcessor() *INIProcessor <span class="cov3" title="2">{
         return &amp;INIProcessor{
                 supportedExtensions: []string{"ini"},
         }
@@ -1007,7 +1016,7 @@ func (p *INIProcessor) Process(ctx context.Context, filename string, content []b
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *INIProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *INIProcessor) GetSupportedExtensions() []string <span class="cov10" title="10">{
         return copyExtensions(p.supportedExtensions)
 }</span>
 
@@ -1110,7 +1119,7 @@ type JSONProcessor struct {
 }
 
 // NewJSONProcessor creates a new JSON processor
-func NewJSONProcessor() *JSONProcessor <span class="cov8" title="1">{
+func NewJSONProcessor() *JSONProcessor <span class="cov3" title="2">{
         return &amp;JSONProcessor{
                 supportedExtensions: []string{"json"},
         }
@@ -1150,7 +1159,7 @@ func (p *JSONProcessor) Process(ctx context.Context, filename string, content []
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *JSONProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *JSONProcessor) GetSupportedExtensions() []string <span class="cov10" title="16">{
         // Return a copy to prevent external modification
         extensions := make([]string, len(p.supportedExtensions))
         copy(extensions, p.supportedExtensions)
@@ -1279,14 +1288,14 @@ import (
 )
 
 // RegisterAllProcessors registers all available processors with the registry
-func RegisterAllProcessors(registry *ParserRegistry) error <span class="cov8" title="1">{
+func RegisterAllProcessors(registry *ParserRegistry) error <span class="cov3" title="2">{
         // Guard clause: validate registry
         if registry == nil </span><span class="cov0" title="0">{
                 return fmt.Errorf("registry cannot be nil")
         }</span>
 
         // Register all processors
-        <span class="cov8" title="1">processors := []models.FileProcessor{
+        <span class="cov3" title="2">processors := []models.FileProcessor{
                 NewYAMLProcessor(),
                 NewJSONProcessor(),
                 NewTOMLProcessor(),
@@ -1298,13 +1307,13 @@ func RegisterAllProcessors(registry *ParserRegistry) error <span class="cov8" ti
         }
 
         // Register each processor
-        for _, processor := range processors </span><span class="cov8" title="1">{
+        for _, processor := range processors </span><span class="cov10" title="16">{
                 if err := registry.RegisterProcessor(processor); err != nil </span><span class="cov0" title="0">{
                         return fmt.Errorf("failed to register processor: %w", err)
                 }</span>
         }
 
-        <span class="cov8" title="1">return nil</span>
+        <span class="cov3" title="2">return nil</span>
 }
 </pre>
 		
@@ -1324,7 +1333,7 @@ type PropertiesProcessor struct {
 }
 
 // NewPropertiesProcessor creates a new Properties processor
-func NewPropertiesProcessor() *PropertiesProcessor <span class="cov8" title="1">{
+func NewPropertiesProcessor() *PropertiesProcessor <span class="cov3" title="2">{
         return &amp;PropertiesProcessor{
                 supportedExtensions: []string{"properties"},
         }
@@ -1350,7 +1359,7 @@ func (p *PropertiesProcessor) Process(ctx context.Context, filename string, cont
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *PropertiesProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *PropertiesProcessor) GetSupportedExtensions() []string <span class="cov10" title="12">{
         return copyExtensions(p.supportedExtensions)
 }</span>
 
@@ -1387,7 +1396,7 @@ type ParserRegistry struct {
 }
 
 // NewParserRegistry creates a new parser registry with all processors registered
-func NewParserRegistry() *ParserRegistry <span class="cov8" title="1">{
+func NewParserRegistry() *ParserRegistry <span class="cov2" title="2">{
         registry := &amp;ParserRegistry{
                 processors:  make([]models.FileProcessor, 0),
                 byExtension: make(map[string]models.FileProcessor),
@@ -1398,52 +1407,52 @@ func NewParserRegistry() *ParserRegistry <span class="cov8" title="1">{
                 panic(fmt.Sprintf("Failed to register processors: %v", err))</span>
         }
 
-        <span class="cov8" title="1">return registry</span>
+        <span class="cov2" title="2">return registry</span>
 }
 
 // RegisterProcessor registers a new processor
-func (r *ParserRegistry) RegisterProcessor(processor models.FileProcessor) error <span class="cov8" title="1">{
+func (r *ParserRegistry) RegisterProcessor(processor models.FileProcessor) error <span class="cov6" title="16">{
         // Guard clause: validate processor
         if processor == nil </span><span class="cov0" title="0">{
                 return fmt.Errorf("processor cannot be nil")
         }</span>
 
         // Guard clause: check for conflicts
-        <span class="cov8" title="1">if err := r.validateNoConflicts(processor); err != nil </span><span class="cov0" title="0">{
+        <span class="cov6" title="16">if err := r.validateNoConflicts(processor); err != nil </span><span class="cov0" title="0">{
                 return fmt.Errorf("processor conflicts with existing: %w", err)
         }</span>
 
         // Register processor
-        <span class="cov8" title="1">r.processors = append(r.processors, processor)
+        <span class="cov6" title="16">r.processors = append(r.processors, processor)
 
         // Register by extension for fast lookup
-        for _, ext := range processor.GetSupportedExtensions() </span><span class="cov8" title="1">{
+        for _, ext := range processor.GetSupportedExtensions() </span><span class="cov7" title="18">{
                 r.byExtension[ext] = processor
         }</span>
 
-        <span class="cov8" title="1">return nil</span>
+        <span class="cov6" title="16">return nil</span>
 }
 
 // GetProcessor returns the appropriate processor for a filename
-func (r *ParserRegistry) GetProcessor(filename string) (models.FileProcessor, error) <span class="cov8" title="1">{
+func (r *ParserRegistry) GetProcessor(filename string) (models.FileProcessor, error) <span class="cov6" title="12">{
         // Guard clause: validate filename
         if filename == "" </span><span class="cov0" title="0">{
                 return nil, fmt.Errorf("filename cannot be empty")
         }</span>
 
         // Get file extension
-        <span class="cov8" title="1">ext := r.getFileExtension(filename)
+        <span class="cov6" title="12">ext := r.getFileExtension(filename)
         if ext == "" </span><span class="cov0" title="0">{
                 return nil, fmt.Errorf("no extension found in filename: %s", filename)
         }</span>
 
         // Look up processor by extension
-        <span class="cov8" title="1">processor, exists := r.byExtension[ext]
-        if !exists </span><span class="cov8" title="1">{
+        <span class="cov6" title="12">processor, exists := r.byExtension[ext]
+        if !exists </span><span class="cov1" title="1">{
                 return nil, fmt.Errorf("no processor found for extension: %s", ext)
         }</span>
 
-        <span class="cov8" title="1">return processor, nil</span>
+        <span class="cov6" title="11">return processor, nil</span>
 }
 
 // GetProcessorByExtension returns processor by extension
@@ -1494,39 +1503,39 @@ func (r *ParserRegistry) GetProcessorCount() int <span class="cov0" title="0">{
 }</span>
 
 // validateNoConflicts checks if a processor conflicts with existing ones
-func (r *ParserRegistry) validateNoConflicts(newProcessor models.FileProcessor) error <span class="cov8" title="1">{
+func (r *ParserRegistry) validateNoConflicts(newProcessor models.FileProcessor) error <span class="cov6" title="16">{
         newExtensions := newProcessor.GetSupportedExtensions()
         
-        for _, existing := range r.processors </span><span class="cov8" title="1">{
+        for _, existing := range r.processors </span><span class="cov9" title="56">{
                 existingExtensions := existing.GetSupportedExtensions()
                 if r.hasExtensionOverlap(newExtensions, existingExtensions) </span><span class="cov0" title="0">{
                         return fmt.Errorf("extension conflict between processors")
                 }</span>
         }
         
-        <span class="cov8" title="1">return nil</span>
+        <span class="cov6" title="16">return nil</span>
 }
 
 // hasExtensionOverlap checks if two extension lists overlap
-func (r *ParserRegistry) hasExtensionOverlap(ext1, ext2 []string) bool <span class="cov8" title="1">{
-        for _, e1 := range ext1 </span><span class="cov8" title="1">{
-                for _, e2 := range ext2 </span><span class="cov8" title="1">{
+func (r *ParserRegistry) hasExtensionOverlap(ext1, ext2 []string) bool <span class="cov9" title="56">{
+        for _, e1 := range ext1 </span><span class="cov9" title="56">{
+                for _, e2 := range ext2 </span><span class="cov10" title="70">{
                         if e1 == e2 </span><span class="cov0" title="0">{
                                 return true
                         }</span>
                 }
         }
-        <span class="cov8" title="1">return false</span>
+        <span class="cov9" title="56">return false</span>
 }
 
 // getFileExtension extracts extension from filename
-func (r *ParserRegistry) getFileExtension(filename string) string <span class="cov8" title="1">{
+func (r *ParserRegistry) getFileExtension(filename string) string <span class="cov6" title="12">{
         ext := filepath.Ext(filename)
         return r.normalizeExtension(ext)
 }</span>
 
 // normalizeExtension normalizes an extension (removes leading dot, converts to lowercase)
-func (r *ParserRegistry) normalizeExtension(extension string) string <span class="cov8" title="1">{
+func (r *ParserRegistry) normalizeExtension(extension string) string <span class="cov6" title="12">{
         ext := strings.TrimPrefix(extension, ".")
         return strings.ToLower(ext)
 }</span>
@@ -1678,7 +1687,7 @@ type TOMLProcessor struct {
 }
 
 // NewTOMLProcessor creates a new TOML processor
-func NewTOMLProcessor() *TOMLProcessor <span class="cov8" title="1">{
+func NewTOMLProcessor() *TOMLProcessor <span class="cov3" title="2">{
         return &amp;TOMLProcessor{
                 supportedExtensions: []string{"toml"},
         }
@@ -1704,7 +1713,7 @@ func (p *TOMLProcessor) Process(ctx context.Context, filename string, content []
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *TOMLProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *TOMLProcessor) GetSupportedExtensions() []string <span class="cov10" title="14">{
         return copyExtensions(p.supportedExtensions)
 }</span>
 
@@ -1745,7 +1754,7 @@ type XMLProcessor struct {
 }
 
 // NewXMLProcessor creates a new XML processor
-func NewXMLProcessor() *XMLProcessor <span class="cov8" title="1">{
+func NewXMLProcessor() *XMLProcessor <span class="cov4" title="2">{
         return &amp;XMLProcessor{
                 supportedExtensions: []string{"xml"},
         }
@@ -1771,7 +1780,7 @@ func (p *XMLProcessor) Process(ctx context.Context, filename string, content []b
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *XMLProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *XMLProcessor) GetSupportedExtensions() []string <span class="cov10" title="6">{
         return copyExtensions(p.supportedExtensions)
 }</span>
 
@@ -1813,7 +1822,7 @@ type YAMLProcessor struct {
 }
 
 // NewYAMLProcessor creates a new YAML processor
-func NewYAMLProcessor() *YAMLProcessor <span class="cov8" title="1">{
+func NewYAMLProcessor() *YAMLProcessor <span class="cov3" title="2">{
         return &amp;YAMLProcessor{
                 supportedExtensions: []string{"yaml", "yml"},
         }
@@ -1853,7 +1862,7 @@ func (p *YAMLProcessor) Process(ctx context.Context, filename string, content []
 }
 
 // GetSupportedExtensions returns supported file extensions
-func (p *YAMLProcessor) GetSupportedExtensions() []string <span class="cov8" title="1">{
+func (p *YAMLProcessor) GetSupportedExtensions() []string <span class="cov10" title="18">{
         // Return a copy to prevent external modification
         extensions := make([]string, len(p.supportedExtensions))
         copy(extensions, p.supportedExtensions)

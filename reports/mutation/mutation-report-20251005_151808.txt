@@ -1,0 +1,427 @@
+Enable mutator "branch/case"
+Enable mutator "branch/else"
+Enable mutator "branch/if"
+Enable mutator "expression/comparison"
+Enable mutator "expression/remove"
+Enable mutator "statement/remove"
+Save mutations into "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644"
+Mutate "internal/adapters/parsers/common.go"
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.0	2025-10-05 15:18:14.555693194 -0300
+@@ -110,7 +110,7 @@
+ 	for _, value := range data {
+ 		switch v := value.(type) {
+ 		case map[string]interface{}:
+-			return true
++
+ 		case []interface{}:
+ 			if len(v) > 0 {
+ 				return true
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.0" with checksum a0b3c7b126fe6a414273037ead7e6958
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.1	2025-10-05 15:18:15.471904680 -0300
+@@ -112,9 +112,8 @@
+ 		case map[string]interface{}:
+ 			return true
+ 		case []interface{}:
+-			if len(v) > 0 {
+-				return true
+-			}
++			_ = v
++
+ 		}
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.1" with checksum 8e348d475e42c3945ac91d297d0df049
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.2	2025-10-05 15:18:16.035939806 -0300
+@@ -14,7 +14,7 @@
+ func ValidateFilenameAndExtension(filename string, supportedExtensions []string) bool {
+ 	// Guard clause: empty filename
+ 	if filename == "" {
+-		return false
++
+ 	}
+ 
+ 	ext := GetFileExtension(filename)
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.2" with checksum 02428cb8525b08973a4604d19dc38d26
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.3	2025-10-05 15:18:16.653000790 -0300
+@@ -25,7 +25,7 @@
+ func ValidateContextAndInput(ctx context.Context, filename string, content []byte) error {
+ 	// Guard clause: context cancelled
+ 	if ctx.Err() != nil {
+-		return fmt.Errorf("context cancelled: %w", ctx.Err())
++		_, _ = fmt.Errorf, ctx.Err
+ 	}
+ 
+ 	// Guard clause: empty filename
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.3" with checksum b3be365297c60e5ddc304a5f842c3686
+PASS "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.4" with checksum 0cf5a3922f22ff1196400abb76c5107c
+PASS "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.5" with checksum 04ea34b948b108ab3bf7b270409f7444
+PASS "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.6" with checksum e81b471a074b45248852429456508253
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.7	2025-10-05 15:18:20.902360552 -0300
+@@ -86,8 +86,7 @@
+ 
+ 	// Add file-specific metadata only if filename is provided
+ 	if filename != "" {
+-		_, _, _ = metadata, filepath.Base, filename
+-		metadata["dirname"] = filepath.Dir(filename)
++		_, _, _, _, _, _ = metadata, filepath.Base, filename, metadata, filepath.Dir, filename
+ 	}
+ 
+ 	return metadata
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.7" with checksum aee9282936711179add8714eccac6577
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.8	2025-10-05 15:18:21.472644895 -0300
+@@ -96,7 +96,7 @@
+ // countKeys counts the number of top-level keys
+ func countKeys(data map[string]interface{}) int {
+ 	if data == nil {
+-		return 0
++
+ 	}
+ 	return len(data)
+ }
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.8" with checksum 87cbdb472ec3df149bda73406c401c0f
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.9	2025-10-05 15:18:22.051934706 -0300
+@@ -104,7 +104,7 @@
+ // hasNestedData checks if the data contains nested structures
+ func hasNestedData(data map[string]interface{}) bool {
+ 	if data == nil {
+-		return false
++
+ 	}
+ 
+ 	for _, value := range data {
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.9" with checksum 8db903ff4e0c284f2cb043318fadfd5e
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.10	2025-10-05 15:18:23.007419325 -0300
+@@ -113,7 +113,7 @@
+ 			return true
+ 		case []interface{}:
+ 			if len(v) > 0 {
+-				return true
++
+ 			}
+ 		}
+ 	}
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.10" with checksum ff061e85759439b163724ac48c9205a2
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.11	2025-10-05 15:18:23.645127002 -0300
+@@ -125,7 +125,8 @@
+ func removeQuotes(value string) string {
+ 	// Guard clause: empty value
+ 	if value == "" {
+-		return value
++		_ = value
++
+ 	}
+ 
+ 	// Guard clause: value too short for quotes
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.11" with checksum 9c7b1b80ebbdbe0808bff38a088fbe60
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.12	2025-10-05 15:18:24.267790244 -0300
+@@ -130,7 +130,8 @@
+ 
+ 	// Guard clause: value too short for quotes
+ 	if len(value) < 2 {
+-		return value
++		_ = value
++
+ 	}
+ 
+ 	// Check for double quotes
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.12" with checksum c430fa24e4ad746a19340ed75fa8625f
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.13	2025-10-05 15:18:24.868544833 -0300
+@@ -135,7 +135,8 @@
+ 
+ 	// Check for double quotes
+ 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+-		return value[1 : len(value)-1]
++		_, _ = value, value
++
+ 	}
+ 
+ 	// Check for single quotes
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.13" with checksum a7fd53ba073f5bf0c48bafb4ce4d5dfd
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.14	2025-10-05 15:18:25.453384319 -0300
+@@ -140,7 +140,8 @@
+ 
+ 	// Check for single quotes
+ 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
+-		return value[1 : len(value)-1]
++		_, _ = value, value
++
+ 	}
+ 
+ 	return value
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.14" with checksum 5329b514e881daec82a1eba0799672b6
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.15	2025-10-05 15:18:26.055414284 -0300
+@@ -192,7 +192,7 @@
+ func parseKeyValueContent(content []byte, isComment func(string) bool) (map[string]interface{}, error) {
+ 	// Guard clause: empty content
+ 	if isEmptyContent(content) {
+-		return createEmptyResult(), nil
++
+ 	}
+ 
+ 	result := createEmptyResult()
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.15" with checksum 6b82837c90868723fe8c0f8053f6c8ea
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.16	2025-10-05 15:18:26.628698130 -0300
+@@ -203,7 +203,7 @@
+ 
+ 		// Skip empty lines and comments
+ 		if isEmptyLine(trimmedLine) || isComment(trimmedLine) {
+-			continue
++
+ 		}
+ 
+ 		// Parse key-value pair
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.16" with checksum 40277747e5ff46518434550a44332339
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.17	2025-10-05 15:18:27.200863850 -0300
+@@ -208,7 +208,8 @@
+ 
+ 		// Parse key-value pair
+ 		if key, value, ok := parseKeyValue(trimmedLine); ok {
+-			result[key] = removeQuotes(value)
++			_, _, _ = result, key, value
++
+ 		}
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.17" with checksum 88ae21a268a4908fac8d07f9cb18d502
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.18	2025-10-05 15:18:27.809758532 -0300
+@@ -219,7 +219,7 @@
+ func parseKeyValue(line string) (string, string, bool) {
+ 	separatorIndex := findKeyValueSeparator(line)
+ 	if separatorIndex == -1 {
+-		return "", "", false
++
+ 	}
+ 
+ 	key, value := extractKeyValue(line, separatorIndex)
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.18" with checksum 33c18754d0c932daebd0d6ec63b10234
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.19	2025-10-05 15:18:28.393293767 -0300
+@@ -112,7 +112,7 @@
+ 		case map[string]interface{}:
+ 			return true
+ 		case []interface{}:
+-			if len(v) > 0 {
++			if len(v) >= 0 {
+ 				return true
+ 			}
+ 		}
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.19" with checksum 1799ac5dba80bb44fcc55b174674981d
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.20	2025-10-05 15:18:29.265963614 -0300
+@@ -129,7 +129,7 @@
+ 	}
+ 
+ 	// Guard clause: value too short for quotes
+-	if len(value) < 2 {
++	if len(value) <= 2 {
+ 		return value
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.20" with checksum 6ad263fdacdce4d485e0c0c50702a238
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.21	2025-10-05 15:18:29.828767697 -0300
+@@ -134,7 +134,7 @@
+ 	}
+ 
+ 	// Check for double quotes
+-	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
++	if true && strings.HasSuffix(value, "\"") {
+ 		return value[1 : len(value)-1]
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.21" with checksum f239eab2e9e2430738381cac36e54a01
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.22	2025-10-05 15:18:30.411412180 -0300
+@@ -134,7 +134,7 @@
+ 	}
+ 
+ 	// Check for double quotes
+-	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
++	if strings.HasPrefix(value, "\"") && true {
+ 		return value[1 : len(value)-1]
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.22" with checksum ec7dbb9c057a9caf436741805c16f215
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.23	2025-10-05 15:18:30.968890464 -0300
+@@ -139,7 +139,7 @@
+ 	}
+ 
+ 	// Check for single quotes
+-	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
++	if true && strings.HasSuffix(value, "'") {
+ 		return value[1 : len(value)-1]
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.23" with checksum a845a0833eb1ecbaeca5085c931e0508
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.24	2025-10-05 15:18:31.537518138 -0300
+@@ -139,7 +139,7 @@
+ 	}
+ 
+ 	// Check for single quotes
+-	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
++	if strings.HasPrefix(value, "'") && true {
+ 		return value[1 : len(value)-1]
+ 	}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.24" with checksum 437417f07299022033e43dd7962892e8
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.25	2025-10-05 15:18:32.111421777 -0300
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return false || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.25" with checksum c55623958c476ad7ffe98a9d460cafab
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.26	2025-10-05 15:18:32.705834982 -0300
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || false
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.26" with checksum 66f99e029199e60bfa07bb81fdccdc6e
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.27	2025-10-05 15:18:33.286252671 -0300
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return false || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.27" with checksum c77fb1210d7dd81f258c00fc0edd92e2
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.28	2025-10-05 15:18:33.917205131 -0300
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return line == "" || strings.HasPrefix(line, "#") || false || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.28" with checksum e3a5c0812ad265e1dfcf6a0dce7f8f44
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.29	2025-10-05 15:18:34.478008712 -0300
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return false || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.29" with checksum 5547c962620867f70b8f8b52eee7c011
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.30	2025-10-05 15:18:35.064614825 -0300
+@@ -168,7 +168,7 @@
+ 
+ // isEmptyLine checks if a line is empty or a comment
+ func isEmptyLine(line string) bool {
+-	return line == "" || strings.HasPrefix(line, "#") || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
++	return line == "" || false || strings.HasPrefix(line, ";") || strings.HasPrefix(line, "!")
+ }
+ 
+ // findKeyValueSeparator finds the separator in a key-value line
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.30" with checksum 8a71bc926d5dedca12832ceb99c9c123
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.31	2025-10-05 15:18:35.648374100 -0300
+@@ -202,7 +202,7 @@
+ 		trimmedLine := trimLine(line)
+ 
+ 		// Skip empty lines and comments
+-		if isEmptyLine(trimmedLine) || isComment(trimmedLine) {
++		if false || isComment(trimmedLine) {
+ 			continue
+ 		}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.31" with checksum c23b957c0e7b94326ee7c772272044ac
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.32	2025-10-05 15:18:36.478667854 -0300
+@@ -202,7 +202,7 @@
+ 		trimmedLine := trimLine(line)
+ 
+ 		// Skip empty lines and comments
+-		if isEmptyLine(trimmedLine) || isComment(trimmedLine) {
++		if isEmptyLine(trimmedLine) || false {
+ 			continue
+ 		}
+ 
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.32" with checksum a96694eb350a065af2be3c777d8e3f5f
+PASS "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.33" with checksum 1b50352dd4578c49e1712b97129d0109
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.34" with checksum 7e7799f1573dc5499fe670fb8a667c9a
+--- internal/adapters/parsers/common.go	2025-10-05 15:14:47.428324623 -0300
++++ /var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.35	2025-10-05 15:18:38.654523090 -0300
+@@ -87,7 +87,7 @@
+ 	// Add file-specific metadata only if filename is provided
+ 	if filename != "" {
+ 		_, _, _ = metadata, filepath.Base, filename
+-		metadata["dirname"] = filepath.Dir(filename)
++		_, _, _ = metadata, filepath.Dir, filename
+ 	}
+ 
+ 	return metadata
+
+FAIL "/var/folders/qx/w9tzlbd100l_00crnvkm7hdm0000gn/T/go-mutesting-541277644/internal/adapters/parsers/common.go.35" with checksum fede6bee80962576f2f85b94b82f9c44
+The mutation score is 0.111111 (4 passed, 32 failed, 1 duplicated, 0 skipped, total is 36)

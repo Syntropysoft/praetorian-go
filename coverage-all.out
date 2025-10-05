@@ -289,6 +289,7 @@ github.com/syntropysoft/praetorian-go/internal/services/validation/pipeline.go:2
 github.com/syntropysoft/praetorian-go/internal/services/validation/pipeline.go:270.45,271.29 1 0
 github.com/syntropysoft/praetorian-go/internal/services/validation/pipeline.go:271.29,273.3 1 0
 github.com/syntropysoft/praetorian-go/internal/services/validation/pipeline.go:274.2,274.10 1 0
+github.com/syntropysoft/praetorian-go/internal/domain/models/config.go:89.40,134.2 1 0
 github.com/syntropysoft/praetorian-go/tests/test_helper.go:17.46,20.2 2 0
 github.com/syntropysoft/praetorian-go/tests/test_helper.go:23.69,27.47 3 0
 github.com/syntropysoft/praetorian-go/tests/test_helper.go:27.47,29.3 1 0
@@ -312,7 +313,6 @@ github.com/syntropysoft/praetorian-go/tests/test_helper.go:93.38,95.2 1 0
 github.com/syntropysoft/praetorian-go/tests/test_helper.go:98.50,107.2 1 0
 github.com/syntropysoft/praetorian-go/tests/test_helper.go:109.50,121.2 1 0
 github.com/syntropysoft/praetorian-go/tests/test_helper.go:123.56,129.2 1 0
-github.com/syntropysoft/praetorian-go/internal/domain/models/config.go:89.40,134.2 1 0
 github.com/syntropysoft/praetorian-go/internal/adapters/parsers/common.go:14.87,16.20 1 1
 github.com/syntropysoft/praetorian-go/internal/adapters/parsers/common.go:16.20,18.3 1 1
 github.com/syntropysoft/praetorian-go/internal/adapters/parsers/common.go:20.2,21.52 2 1

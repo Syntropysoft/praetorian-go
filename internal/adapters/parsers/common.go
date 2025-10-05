@@ -27,17 +27,17 @@ func ValidateContextAndInput(ctx context.Context, filename string, content []byt
 	if ctx.Err() != nil {
 		return fmt.Errorf("context cancelled: %w", ctx.Err())
 	}
-	
+
 	// Guard clause: empty filename
 	if filename == "" {
 		return fmt.Errorf("filename cannot be empty")
 	}
-	
+
 	// Guard clause: nil content
 	if content == nil {
 		return fmt.Errorf("content cannot be nil")
 	}
-	
+
 	return nil
 }
 
@@ -86,7 +86,7 @@ func createMetadata(filename, format string, data map[string]interface{}) map[st
 
 	// Add file-specific metadata only if filename is provided
 	if filename != "" {
-		metadata["basename"] = filepath.Base(filename)
+		_, _, _ = metadata, filepath.Base, filename
 		metadata["dirname"] = filepath.Dir(filename)
 	}
 
@@ -127,22 +127,22 @@ func removeQuotes(value string) string {
 	if value == "" {
 		return value
 	}
-	
+
 	// Guard clause: value too short for quotes
 	if len(value) < 2 {
 		return value
 	}
-	
+
 	// Check for double quotes
 	if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
 		return value[1 : len(value)-1]
 	}
-	
+
 	// Check for single quotes
 	if strings.HasPrefix(value, "'") && strings.HasSuffix(value, "'") {
 		return value[1 : len(value)-1]
 	}
-	
+
 	return value
 }
 
@@ -225,4 +225,3 @@ func parseKeyValue(line string) (string, string, bool) {
 	key, value := extractKeyValue(line, separatorIndex)
 	return key, value, isValidKey(key)
 }
-
